@@ -6,6 +6,7 @@ use App\Repository\ManagerRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: ManagerRepository::class)]
 class Manager implements UserInterface, PasswordAuthenticatedUserInterface
@@ -29,6 +30,11 @@ class Manager implements UserInterface, PasswordAuthenticatedUserInterface
 
     #[ORM\Column(type: 'string', length: 56)]
     private $lastname;
+
+    #[ORM\OneToOne(inversedBy: 'manager', targetEntity: Hotel::class, cascade: ['persist', 'remove'])]
+    private $hotel;
+
+
 
     public function getId(): ?int
     {
@@ -90,7 +96,21 @@ class Manager implements UserInterface, PasswordAuthenticatedUserInterface
 
         return $this;
     }
+    /**
+     * @Assert\NotBlank()
+     * @Assert\Length(min=5, max=128)
+     */
+    private ?string $plainPassword = null;
 
+    public function getPlainPassword(): ?string
+    {
+        return $this->plainPassword;
+    }
+
+    public function setPlainPassword(string $password): void
+    {
+        $this->plainPassword = $password;
+    }
     /**
      * @see UserInterface
      */
@@ -120,6 +140,18 @@ class Manager implements UserInterface, PasswordAuthenticatedUserInterface
     public function setLastname(string $lastname): self
     {
         $this->lastname = $lastname;
+
+        return $this;
+    }
+
+    public function getHotel(): ?Hotel
+    {
+        return $this->hotel;
+    }
+
+    public function setHotel(?Hotel $hotel): self
+    {
+        $this->hotel = $hotel;
 
         return $this;
     }

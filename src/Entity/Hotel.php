@@ -25,6 +25,15 @@ class Hotel
     #[ORM\Column(type: 'text')]
     private $description;
 
+    #[ORM\OneToOne(mappedBy: 'hotel', targetEntity: Manager::class, cascade: ['persist', 'remove'])]
+    private $manager;
+
+    public function __toString(): string
+    {
+        return $this->name;
+    }
+
+
     public function getId(): ?int
     {
         return $this->id;
@@ -74,6 +83,28 @@ class Hotel
     public function setDescription(string $description): self
     {
         $this->description = $description;
+
+        return $this;
+    }
+
+    public function getManager(): ?Manager
+    {
+        return $this->manager;
+    }
+
+    public function setManager(?Manager $manager): self
+    {
+        // unset the owning side of the relation if necessary
+        if ($manager === null && $this->manager !== null) {
+            $this->manager->setHotel(null);
+        }
+
+        // set the owning side of the relation if necessary
+        if ($manager !== null && $manager->getHotel() !== $this) {
+            $manager->setHotel($this);
+        }
+
+        $this->manager = $manager;
 
         return $this;
     }
