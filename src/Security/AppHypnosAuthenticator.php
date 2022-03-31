@@ -45,13 +45,25 @@ class AppHypnosAuthenticator extends AbstractLoginFormAuthenticator
 
     public function onAuthenticationSuccess(Request $request, TokenInterface $token, string $firewallName): ?Response
     {
+        $user = $token->getUser();
         if ($targetPath = $this->getTargetPath($request->getSession(), $firewallName)) {
             return new RedirectResponse($targetPath);
         }
 
         // For example:
-        //return new RedirectResponse($this->urlGenerator->generate('some_route'));
-        throw new \Exception('TODO: provide a valid redirect inside '.__FILE__);
+
+        switch ($user->getRoles()[0]) {
+            case 'ROLE_ADMIN':
+                return new RedirectResponse($this->urlGenerator->generate('admin'));
+            case 'ROLE_CUSTOMER':
+                return new RedirectResponse($this->urlGenerator->generate('app_login'));
+            case 'ROLE_MANAGER':
+                return new RedirectResponse($this->urlGenerator->generate('app_recruiters'));
+            default :
+                return new RedirectResponse($this->urlGenerator->generate('app_home'));
+
+        }
+        /* throw new \Exception('TODO: provide a valid redirect inside '.__FILE__); */
     }
 
     protected function getLoginUrl(Request $request): string
