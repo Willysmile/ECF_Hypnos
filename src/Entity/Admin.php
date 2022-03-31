@@ -20,7 +20,7 @@ class Admin implements UserInterface, PasswordAuthenticatedUserInterface
     private $email;
 
     #[ORM\Column(type: 'json')]
-    private $roles = [];
+    private $roles = ['ROLE_ADMIN'];
 
     #[ORM\Column(type: 'string')]
     private $password;
