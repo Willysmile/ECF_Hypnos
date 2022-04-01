@@ -22,6 +22,9 @@ class Suite
     #[ORM\Column(type: 'integer')]
     private $night_price;
 
+    #[ORM\ManyToOne(targetEntity: Hotel::class, inversedBy: 'suite')]
+    private $hotel;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -59,6 +62,18 @@ class Suite
     public function setNightPrice(int $night_price): self
     {
         $this->night_price = $night_price;
+
+        return $this;
+    }
+
+    public function getHotel(): ?Hotel
+    {
+        return $this->hotel;
+    }
+
+    public function setHotel(?Hotel $hotel): self
+    {
+        $this->hotel = $hotel;
 
         return $this;
     }
