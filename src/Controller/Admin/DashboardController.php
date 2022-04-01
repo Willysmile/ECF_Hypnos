@@ -46,8 +46,9 @@ class DashboardController extends AbstractDashboardController
     function configureMenuItems(): iterable
     {
         yield MenuItem::linkToDashboard('Dashboard', 'fa fa-home');
-        yield MenuItem::linkToCrud('The Label', 'fas fa-list', Hotel::class);
-        yield MenuItem::linkToCrud('The Label', 'fas fa-list', Manager::class);
+        yield MenuItem::section();
+        yield MenuItem::linkToCrud('Établissements', 'fas fa-list', Hotel::class);
+        yield MenuItem::linkToCrud('Managers', 'fas fa-list', Manager::class);
         yield MenuItem::section();
         yield MenuItem::linkToRoute('Inscriptions Managers', 'fas fa-user-shield', 'app_manager_registration');
     }
