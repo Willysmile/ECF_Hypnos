@@ -7,8 +7,13 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 #[ORM\Entity(repositoryClass: ManagerRepository::class)]
+/**
+ * @ORM\Entity
+ * @UniqueEntity(fields={"email"},message="Cet email est déja utilisé, merci d'en choiser un autre.")
+ */
 class Manager implements UserInterface, PasswordAuthenticatedUserInterface
 {
     #[ORM\Id]
@@ -16,7 +21,9 @@ class Manager implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(type: 'integer')]
     private $id;
 
-    #[ORM\Column(type: 'string', length: 180, unique: true)]
+
+    #[ORM\Column(type: 'string', length: 180,unique: true)]
+
     private $email;
 
     #[ORM\Column(type: 'json')]
@@ -30,6 +37,7 @@ class Manager implements UserInterface, PasswordAuthenticatedUserInterface
 
     #[ORM\Column(type: 'string', length: 56)]
     private $lastname;
+
 
     #[ORM\OneToOne(inversedBy: 'manager', targetEntity: Hotel::class, cascade: ['persist', 'remove'])]
     private $hotel;
@@ -97,8 +105,8 @@ class Manager implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
     /**
-     * @Assert\NotBlank()
-     * @Assert\Length(min=5, max=128)
+     *
+     * @Assert\Length(min=8, max=128)
      */
     private ?string $plainPassword = null;
 

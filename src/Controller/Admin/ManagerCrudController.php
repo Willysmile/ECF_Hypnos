@@ -4,22 +4,27 @@ namespace App\Controller\Admin;
 
 use App\Entity\Manager;
 use Doctrine\ORM\EntityManagerInterface;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Action;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Actions;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Config\KeyValueStore;
 use EasyCorp\Bundle\EasyAdminBundle\Context\AdminContext;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Dto\EntityDto;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\ChoiceField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\EmailField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\Field;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
+use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\FormEvent;
 use Symfony\Component\Form\FormEvents;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
+use Symfony\Component\Validator\Constraints\Length;
 
 
 class ManagerCrudController extends AbstractCrudController
@@ -39,63 +44,40 @@ class ManagerCrudController extends AbstractCrudController
 
     public function configureFields(string $pageName): iterable
     {
+
+
         return [
             IdField::new('id')->hideOnForm(),
-            EmailField::new('email'),
-            TextField::new('firstname'),
-            TextField::new('lastname'),
-            /*TextField::new('password', 'password')
-                ->setFormType(PasswordType::class)
-                ->setRequired($pageName === Crud::PAGE_NEW)
-                ->onlyWhenCreating() ,*/
-            /*AssociationField::new('hotel'),*/
-            Field::new('plainPassword', 'New Password')->onlyOnForms()
-                ->setFormType(RepeatedType::class)
+            EmailField::new('email', 'E-mail')
+                ->setFormType(EmailType::class)
                 ->setFormTypeOptions([
-                    'type' => PasswordType::class,
-                    'first_options' => ['label' => 'New password'],
-                    'second_options' => ['label' => 'Repeat Password']
-                ])->setRequired(true)
+                    'constraints' => new Length([
+                        'min' => 5,
+                        'max' => 60]),
+                    'attr' => [
+                        'placeholder' => "Merci de saisir l'email du Manager",
+
+                    ]
+                ]),
+            TextField::new('firstname', 'Prénom du Manager'),
+            TextField::new('lastname', 'Nom du Manager'),
+            AssociationField::new('hotel', 'Établissement assigné'),
+
+
+
         ];
 
     }
-
-
-    public function createEditFormBuilder(EntityDto $entityDto, KeyValueStore $keyValueStore, AdminContext $context): FormBuilderInterface
+    public function configureActions(Actions $actions): Actions
     {
-        $formBuilder = parent::createEditFormBuilder($entityDto, $keyValueStore, $context);
-        $this->addEncodePasswordEventListener($formBuilder);
-
-        return $formBuilder;
+        return $actions
+            // ...
+            ->remove(Crud::PAGE_INDEX, Action::NEW)
+           /* ->remove(Crud::PAGE_INDEX, Action::EDIT)
+            ->remove(Crud::PAGE_INDEX, Action::DELETE)
+            ->remove(Crud::PAGE_DETAIL, Action::EDIT)*/
+            ;
     }
 
-    public function createNewFormBuilder(EntityDto $entityDto, KeyValueStore $formOptions, AdminContext $context): FormBuilderInterface
-    {
-        $formBuilder = parent::createNewFormBuilder($entityDto, $formOptions, $context);
-        $this->addEncodePasswordEventListener($formBuilder);
 
-        return $formBuilder;
-    }
-
-    /**
-     * @param FormBuilderInterface $formBuilder
-     */
-    public function addEncodePasswordEventListener(FormBuilderInterface $formBuilder )
-    {
-
-        $formBuilder->addEventListener(FormEvents::SUBMIT, function (FormEvent $event) {
-
-            $user= $event->getData();
-
-
-            if ($user->getPlainPassword()) {
-                $user->setPassword($this->encoder->HashPassword($user, $user->getPlainPassword()));
-                ;
-                $this->entityManager->persist($user);
-                $this->entityManager->flush($user);
-            }
-        });
-
-
-    }
 }

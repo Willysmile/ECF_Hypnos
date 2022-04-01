@@ -6,8 +6,14 @@ use App\Repository\CustomerRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 #[ORM\Entity(repositoryClass: CustomerRepository::class)]
+/**
+ * @ORM\Entity
+ * @UniqueEntity(fields={"email"},message="Cet email est déja utilisé, merci de vous connecter.")
+ */
 class Customer implements UserInterface, PasswordAuthenticatedUserInterface
 {
     #[ORM\Id]
@@ -15,7 +21,7 @@ class Customer implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(type: 'integer')]
     private $id;
 
-    #[ORM\Column(type: 'string', length: 180, unique: true)]
+    #[ORM\Column(type: 'string', length: 180)]
     private $email;
 
     #[ORM\Column(type: 'json')]
