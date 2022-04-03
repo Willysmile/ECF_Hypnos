@@ -5,7 +5,9 @@ namespace App\Entity;
 use App\Repository\SuiteRepository;
 use Doctrine\ORM\Mapping as ORM;
 
+
 #[ORM\Entity(repositoryClass: SuiteRepository::class)]
+
 class Suite
 {
     #[ORM\Id]
@@ -24,6 +26,8 @@ class Suite
 
     #[ORM\ManyToOne(targetEntity: Hotel::class, inversedBy: 'suite')]
     private $hotel;
+
+
 
     public function getId(): ?int
     {
@@ -77,4 +81,6 @@ class Suite
 
         return $this;
     }
+
+
 }

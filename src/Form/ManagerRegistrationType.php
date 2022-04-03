@@ -12,6 +12,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\Length;
+use Vich\UploaderBundle\Form\Type\VichImageType;
 
 class ManagerRegistrationType extends AbstractType
 {
@@ -64,6 +65,7 @@ class ManagerRegistrationType extends AbstractType
                     'style' => "width : 50%"
                 ]],
             ])
+
             ->add('submit', SubmitType::class, [
                 'label' => "Inscrire le Manager",
                 'attr' => [
