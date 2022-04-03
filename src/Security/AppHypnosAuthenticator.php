@@ -56,9 +56,9 @@ class AppHypnosAuthenticator extends AbstractLoginFormAuthenticator
             case 'ROLE_ADMIN':
                 return new RedirectResponse($this->urlGenerator->generate('admin'));
             case 'ROLE_CUSTOMER':
-                return new RedirectResponse($this->urlGenerator->generate('app_login'));
+                return new RedirectResponse($this->urlGenerator->generate('app_home'));
             case 'ROLE_MANAGER':
-                return new RedirectResponse($this->urlGenerator->generate('app_recruiters'));
+                return new RedirectResponse($this->urlGenerator->generate('manager'));
             default :
                 return new RedirectResponse($this->urlGenerator->generate('app_home'));
 

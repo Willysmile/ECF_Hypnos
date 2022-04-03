@@ -6,9 +6,10 @@ use App\Repository\HotelRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 #[ORM\Entity(repositoryClass: HotelRepository::class)]
-class Hotel
+class Hotel extends AbstractController
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -30,7 +31,7 @@ class Hotel
     #[ORM\OneToOne(mappedBy: 'hotel', targetEntity: Manager::class, cascade: ['persist', 'remove'])]
     private $manager;
 
-    #[ORM\OneToMany(mappedBy: 'hotel', targetEntity: suite::class)]
+    #[ORM\OneToMany(mappedBy: 'hotel', targetEntity: Suite::class)]
     private $suite;
 
     public function __construct()
@@ -101,6 +102,7 @@ class Hotel
     {
         return $this->manager;
     }
+
 
     public function setManager(?Manager $manager): self
     {

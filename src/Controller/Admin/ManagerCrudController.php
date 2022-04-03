@@ -47,7 +47,7 @@ class ManagerCrudController extends AbstractCrudController
 
 
         return [
-            IdField::new('id')->hideOnForm(),
+
             EmailField::new('email', 'E-mail')
                 ->setFormType(EmailType::class)
                 ->setFormTypeOptions([

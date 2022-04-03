@@ -24,44 +24,48 @@ class ManagerRegistrationType extends AbstractType
                     'min' => 5,
                     'max' => 60]),
                 'attr' => [
-                    'placeholder' => "Merci de saisir votre email",
+                    'placeholder' => "Merci de saisir l’email du Manager",
                     'class' => "form-control m-2",
                     'style' => "width : 50%"
                 ]
             ])
             ->add('firstname', TextType::class, [
-                'label' => 'Mon prénom',
+                'label' => 'Prénom du Manager',
                 'attr' => [
                     'class' => "form-control m-2",
+                    'style' => "width : 50%",
+                    'placeholder' => "Merci de saisir le prénom du Manager",
                 ]
             ])
             ->add('lastname', TextType::class, [
-                'label' => 'Mon nom',
+                'label' => 'Nom du Manager',
                 'attr' => [
                     'class' => "form-control m-2",
+                    'style' => "width : 50%",
+                    'placeholder' => "Merci de saisir le nom du Manager",
                 ]
             ])
             ->add('password', RepeatedType::class, [
                 'type' => PasswordType::class,
                 'invalid_message' => 'Le mot de passe et la confirmation doivent être identiques',
-                'label' => "Votre mot de passe",
+                'label' => "Entrez le mot de passe",
                 'required' => true,
                 'constraints' => new Length([
                     'min' => 8,
                 ]),
                 'first_options' => ['label' => 'Mot de passe', 'attr' => [
-                    'placeholder' => "Merci de saisir votre mot de passe",
+                    'placeholder' => "Merci de saisir le mot de passe",
                     'class' => "form-control m-2",
                     'style' => "width : 50%"
                 ]],
                 'second_options' => ['label' => 'Confirmation du mot de passe', 'attr' => [
-                    'placeholder' => "Merci de confirmer votre mot de passe",
+                    'placeholder' => "Merci de confirmer le mot de passe",
                     'class' => "form-control m-2",
                     'style' => "width : 50%"
                 ]],
             ])
             ->add('submit', SubmitType::class, [
-                'label' => "S’inscrire",
+                'label' => "Inscrire le Manager",
                 'attr' => [
                     'class' => "btn btn-lg btn-primary m-3"
                 ]

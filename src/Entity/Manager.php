@@ -42,7 +42,11 @@ class Manager implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToOne(inversedBy: 'manager', targetEntity: Hotel::class, cascade: ['persist', 'remove'])]
     private $hotel;
 
+    public function __toString(): string
+    {
 
+        return "$this->firstname" . " " . "$this->lastname";
+    }
 
     public function getId(): ?int
     {

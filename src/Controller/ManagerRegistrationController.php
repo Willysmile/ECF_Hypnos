@@ -2,11 +2,8 @@
 
 namespace App\Controller;
 
-use App\Entity\Customer;
 use App\Entity\Manager;
-use App\Form\CustomerRegistrationType;
 use App\Form\ManagerRegistrationType;
-use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -30,13 +27,7 @@ class ManagerRegistrationController extends AbstractController
 
             $entity->persist($user);
             $entity->flush();
-
-
-
         }
-
-
-
 
         return $this->render('manager_registration/index.html.twig', [
             'controller_name' => 'ManagerRegistrationController',
