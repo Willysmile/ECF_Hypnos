@@ -1,0 +1,51 @@
+{% extends '@EasyAdmin/page/content.html.twig' %}
+
+{% block title %}Gestion des suites{% endblock %}
+
+{% block main %}
+    <h1>Gestions des suites</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+
+                <th>Nom de la suite</th>
+                <th>Description</th>
+                <th>Prix par nuit</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+
+        {% for suite in suites %}
+            <tr>
+
+                <td>{{ suite.name }}</td>
+                <td>{{ suite.description }}</td>
+                <td>{{ suite.nightPrice }} €</td>
+                <td>
+                    <a class="btn btn-primary m-1"href="{{ ea_url().setRoute('app_manager_suite_show', {'id': suite.id}) }}">Voir</a>
+
+                    <a class="btn btn-primary m-1"href="{{ ea_url().setRoute('app_manager_suite_edit', {'id': suite.id}) }}">Éditer</a>
+
+                    <form method="post" action="{{ ea_url().setRoute('app_manager_suite_delete', {'id': suite.id}) }}"
+                          onsubmit="return confirm('Are you sure you want to delete this item?');">
+
+                        <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ suite.id) }}">
+                        <button class="btn btn-danger">Suppression</button>
+                    </form>
+
+                </td>
+            </tr>
+
+
+        {% else %}
+            <tr>
+                <td colspan="5">Aucune suite d’enregistrée</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a class="btn btn-primary mx-2"href="{{ ea_url().setRoute('app_manager_suite_new') }}">Ajouter une suite</a>
+{% endblock %}

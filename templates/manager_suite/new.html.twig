@@ -1,0 +1,11 @@
+{% extends '@EasyAdmin/page/content.html.twig' %}
+
+{% block title %}Créér une nouvelle suite{% endblock %}
+
+{% block main %}
+    <h1>Créer une nouvelle suite</h1>
+
+    {{ include('manager_suite/_form.html.twig') }}
+
+    <a href="{{ ea_url().setRoute('app_manager_suite_index') }}">Retour à la liste</a>
+{% endblock %}

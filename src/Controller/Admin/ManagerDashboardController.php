@@ -48,26 +48,10 @@ class ManagerDashboardController extends AbstractDashboardController
     public function configureMenuItems(): iterable
     {
         yield MenuItem::linkToDashboard('Dashboard', 'fa fa-home');
-        yield MenuItem::linkToCrud('Établissements', 'fas fa-list', Hotel::class);
-        yield MenuItem::linkToCrud('Suite', 'fas fa-list', Suite::class);
+        yield MenuItem::section();
+        yield MenuItem::linkToRoute('Établissement', 'fas fa-user-shield', 'app_hotel_edit');
+        yield MenuItem::linkToRoute('Inscription Suite', 'fas fa-user-shield', 'app_manager_suite_index');
     }
 
-    public function configureUserMenu(UserInterface $user): UserMenu
-    {
-        // Usually it's better to call the parent method because that gives you a
-        // user menu with some menu items already created ("sign out", "exit impersonation", etc.)
-        // if you prefer to create the user menu from scratch, use: return UserMenu::new()->...
-        return parent::configureUserMenu($user)
-            // use the given $user object to get the user name
-            ->setName($user->getUserIdentifier())
-            // use this method if you don't want to display the name of the user
-            ->displayUserName(false)
-            // you can use any type of menu item, except submenus
-            ->addMenuItems([
-                MenuItem::linkToRoute('My Profile', 'fa fa-id-card', '...', ['...' => '...']),
-                MenuItem::linkToRoute('Settings', 'fa fa-user-cog', '...', ['...' => '...']),
-                MenuItem::section(),
-                MenuItem::linkToLogout('Logout', 'fa fa-sign-out'),
-            ]);
-    }
+
 }

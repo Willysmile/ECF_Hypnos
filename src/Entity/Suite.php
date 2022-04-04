@@ -29,12 +29,12 @@ class Suite
     #[ORM\ManyToOne(targetEntity: Hotel::class, inversedBy: 'suite')]
     private $hotel;
 
-    #[ORM\OneToMany(mappedBy: 'suite', targetEntity: ImagesSuite::class)]
-    private $Images;
+    #[ORM\OneToMany(mappedBy: 'suite', targetEntity: ImagesSuite::class, cascade: ['persist', 'remove'])]
+    private $images;
 
     public function __construct()
     {
-        $this->Images = new ArrayCollection();
+        $this->images = new ArrayCollection();
     }
 
 
@@ -97,13 +97,13 @@ class Suite
      */
     public function getImages(): Collection
     {
-        return $this->Images;
+        return $this->images;
     }
 
     public function addImage(ImagesSuite $image): self
     {
-        if (!$this->Images->contains($image)) {
-            $this->Images[] = $image;
+        if (!$this->images->contains($image)) {
+            $this->images[] = $image;
             $image->setSuite($this);
         }
 
@@ -112,7 +112,7 @@ class Suite
 
     public function removeImage(ImagesSuite $image): self
     {
-        if ($this->Images->removeElement($image)) {
+        if ($this->images->removeElement($image)) {
             // set the owning side to null (unless already changed)
             if ($image->getSuite() === $this) {
                 $image->setSuite(null);
