@@ -1,7 +1,7 @@
-
+{% extends 'base.html.twig' %}
 {% block title %}Edit Suite{% endblock %}
 
-{% block main %}
+{% block body %}
   <h1>Editer les suites</h1>
 
   {{ include('manager_suite/_form.html.twig', {'button_label': 'Update'}) }}

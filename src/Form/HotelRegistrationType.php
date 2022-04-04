@@ -15,7 +15,11 @@ class HotelRegistrationType extends AbstractType
     {
         $builder
             ->add('name', TextType::class, [
-                'disabled' => "true"
+                'label' => 'Le nom de votre établissement est :',
+                'disabled' => "true",
+                'attr' => [
+                'class' => "form-control m-2 w-50"]
+
             ])
             ->add('city', TextType::class, [
                 'disabled' => "true"

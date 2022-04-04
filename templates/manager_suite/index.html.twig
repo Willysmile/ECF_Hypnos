@@ -1,8 +1,8 @@
-{% extends '@EasyAdmin/page/content.html.twig' %}
+{% extends 'base.html.twig' %}
 
 {% block title %}Gestion des suites{% endblock %}
 
-{% block main %}
+{% block body %}
     <h1>Gestions des suites</h1>
 
     <table class="table">
@@ -24,11 +24,11 @@
                 <td>{{ suite.description }}</td>
                 <td>{{ suite.nightPrice }} €</td>
                 <td>
-                    <a class="btn btn-primary m-1"href="{{ ea_url().setRoute('app_manager_suite_show', {'id': suite.id}) }}">Voir</a>
+                    <a class="btn btn-primary m-1"href="{{ path('app_manager_suite_show', {'id': suite.id}) }}">Voir</a>
 
-                    <a class="btn btn-primary m-1"href="{{ ea_url().setRoute('app_manager_suite_edit', {'id': suite.id}) }}">Éditer</a>
+                    <a class="btn btn-primary m-1"href="{{ path('app_manager_suite_edit', {'id': suite.id}) }}">Éditer</a>
 
-                    <form method="post" action="{{ ea_url().setRoute('app_manager_suite_delete', {'id': suite.id}) }}"
+                    <form method="post" action="{{ path('app_manager_suite_delete', {'id': suite.id}) }}"
                           onsubmit="return confirm('Are you sure you want to delete this item?');">
 
                         <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ suite.id) }}">
@@ -47,5 +47,5 @@
         </tbody>
     </table>
 
-    <a class="btn btn-primary mx-2"href="{{ ea_url().setRoute('app_manager_suite_new') }}">Ajouter une suite</a>
+    <a class="btn btn-primary mx-2"href="{{ path('app_manager_suite_new') }}">Ajouter une suite</a>
 {% endblock %}

@@ -3,12 +3,8 @@
 namespace App\Controller;
 
 use App\Entity\Hotel;
-use App\Entity\Manager;
 use App\Form\HotelRegistrationType;
-use App\Form\ManagerRegistrationType;
-use App\Repository\HotelRepository;
 use Doctrine\ORM\EntityManagerInterface;
-use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -16,8 +12,6 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class HotelInfosController extends AbstractController
 {
-
-
     #[Route('/manager/hotel/', name: 'app_hotel_edit')]
     public function index(Request $request, EntityManagerInterface $entity): Response
     {
