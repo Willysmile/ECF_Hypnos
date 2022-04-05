@@ -12,7 +12,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-#[Route('/manager/suite')]
+#[Route('/manager/hotel/suite')]
 class ManagerSuiteController extends AbstractController
 {
     #[Route('/', name: 'app_manager_suite_index', methods: ['GET'])]
@@ -69,10 +69,10 @@ class ManagerSuiteController extends AbstractController
             $entity->persist($suite);
             $entity->flush();
 
-
+            return $this->redirectToRoute('app_manager_suite_index', [],Response::HTTP_SEE_OTHER);
         }
 
-        return $this->renderForm('manager_suite/new.html.twig', [
+       return $this->renderForm('manager_suite/new.html.twig', [
             'suite' => $suite,
             'form' => $form]);
     }
@@ -87,7 +87,7 @@ class ManagerSuiteController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}/edit', name: 'app_manager_suite_edit', methods: ['GET', 'POST'])]
+    #[Route('/{id}/edit/', name: 'app_manager_suite_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Suite $suite, EntityManagerInterface $entity): Response
     {
 
@@ -133,6 +133,7 @@ class ManagerSuiteController extends AbstractController
     #[Route('/{id}', name: 'app_manager_suite_delete', methods: ['POST'])]
     public function delete(Request $request, Suite $suite, SuiteRepository $suiteRepository): Response
     {
+
         if ($this->isCsrfTokenValid('delete' . $suite->getId(), $request->request->get('_token'))) {
             $suiteRepository->remove($suite);
         }

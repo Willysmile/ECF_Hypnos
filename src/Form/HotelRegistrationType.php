@@ -5,6 +5,7 @@ namespace App\Form;
 use App\Entity\Hotel;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -18,16 +19,36 @@ class HotelRegistrationType extends AbstractType
                 'label' => 'Le nom de votre établissement est :',
                 'disabled' => "true",
                 'attr' => [
-                'class' => "form-control m-2 w-50"]
+                'class' => "form-control m-2 ",
+                'style' => 'width : 10%'  ]
+
+            ])   ->add('address', TextType::class, [
+                'label' => 'L’adresse est :',
+                'disabled' => "true",
+                'attr' => [
+                    'class' => "form-control m-2 ",
+                    'style' => 'width : 10%'  ]
+
 
             ])
             ->add('city', TextType::class, [
-                'disabled' => "true"
+                'label' => 'La ville',
+                'disabled' => "true",
+                'attr' => [
+                    'class' => "form-control m-2 ",
+                    'style' => 'width : 10%'  ]
+
             ])
-            ->add('address', TextType::class, [
-                'disabled' => "true"
-            ])
-            ->add('description')
+
+
+            ->add('description', TextareaType::class, [
+                'label' => 'Description de l’établissement',
+                'attr' => [
+                    'class' => "form-control m-2 ",
+                    'style' => 'width : 10%'  ]
+
+                ]
+            )
             ->add('submit', SubmitType::class, [
                 'label' => "Mettre à jour",
                 'attr' => [

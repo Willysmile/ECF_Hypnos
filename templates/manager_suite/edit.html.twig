@@ -16,16 +16,19 @@
     <div class="row ">
 
   {% for suite in suite.images %}
-      <div class="col-md ">
+    <div class="col-md ">
 
-        <div class="card my-2" style="width: 200px;">
-          <img class="card-img-top" src="{{ asset('/uploads/'~suite.name) }}" alt="Image suite">
-          <div class="card-body">
-            <a href="{{ path('app_image_delete', {id: suite.id})}}" data-delete data-token="{{ csrf_token('delete' ~ suite.id )}}">Supprimer</a>
+      <div class="card my-2" style="width: 200px;">
+        <img class="card-img-top" src="{{ asset('/uploads/'~suite.name) }}" alt="Image suite">
+        <div class="card-body">
 
-          </div>
+
+
+
+
         </div>
       </div>
+    </div>
   {% endfor %}
     </div>
     </div>
@@ -38,6 +41,6 @@
 
   {{ include('manager_suite/_delete_form.html.twig') }}
   {% block javascripts %}
-    <script src="{{ asset('js/images.js') }}"></script>
+
   {% endblock %}
 {% endblock %}

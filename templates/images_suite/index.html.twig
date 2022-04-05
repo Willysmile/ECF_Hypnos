@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}ImagesSuite index{% endblock %}
+
+{% block body %}
+    <h1>ImagesSuite index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for images_suite in images_suites %}
+            <tr>
+                <td>{{ images_suite.id }}</td>
+                <td>{{ images_suite.name }}</td>
+                <td>
+                    <a href="{{ path('app_images_suite_show', {'id': images_suite.id}) }}">show</a>
+                    <a href="{{ path('app_images_suite_edit', {'id': images_suite.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_images_suite_new') }}">Create new</a>
+{% endblock %}
