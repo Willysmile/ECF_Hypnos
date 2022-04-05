@@ -8,7 +8,7 @@
 
   {{ form_start(form) }}
 
-
+  {{ form_end(form) }}
 
   <h2>Images</h2>
 
@@ -17,14 +17,11 @@
 
   {% for suite in suite.images %}
     <div class="col-md ">
-
       <div class="card my-2" style="width: 200px;">
         <img class="card-img-top" src="{{ asset('/uploads/'~suite.name) }}" alt="Image suite">
         <div class="card-body">
 
-
-
-
+          {{ include('manager_suite/_delete_images.html.twig') }}
 
         </div>
       </div>
@@ -33,13 +30,13 @@
     </div>
     </div>
 
-      </div>
 
-  {{ form_end(form) }}
+
 
   <a href="{{ path('app_manager_suite_index') }}">Retour à la liste</a>
 
   {{ include('manager_suite/_delete_form.html.twig') }}
+
   {% block javascripts %}
 
   {% endblock %}

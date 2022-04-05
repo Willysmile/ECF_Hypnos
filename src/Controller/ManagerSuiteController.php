@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\ImagesSuite;
 use App\Entity\Suite;
 use App\Form\SuiteType;
+use App\Repository\ImagesSuiteRepository;
 use App\Repository\SuiteRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -87,7 +88,7 @@ class ManagerSuiteController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}/edit/', name: 'app_manager_suite_edit', methods: ['GET', 'POST'])]
+    #[Route('/edit/{id}', name: 'app_manager_suite_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Suite $suite, EntityManagerInterface $entity): Response
     {
 
@@ -139,5 +140,17 @@ class ManagerSuiteController extends AbstractController
         }
 
         return $this->redirectToRoute('app_manager_suite_index', [],Response::HTTP_SEE_OTHER);
+    }
+
+    #[Route('/images/{id}', name: 'app_manager_image_delete', methods: ['POST'])]
+    public function Imagesdelete(Request $request, ImagesSuite $image, ImagesSuiteRepository $suiteRepository): Response
+    {
+        $url = $request->server->get("HTTP_REFERER")
+        ;
+        if ($this->isCsrfTokenValid('delete' . $image->getId(), $request->request->get('_token'))) {
+            $suiteRepository->remove($image);
+        }
+
+        return $this->redirect($url);
     }
 }

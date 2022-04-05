@@ -16,7 +16,7 @@ class ImagesSuite
     #[ORM\Column(type: 'string', length: 255)]
     private $name;
 
-    #[ORM\ManyToOne(targetEntity: Suite::class, inversedBy: 'Images')]
+    #[ORM\ManyToOne(targetEntity: Suite::class, inversedBy: 'images')]
     private $suite;
 
     public function getId(): ?int
