@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Gestion de l’hôtel{% endblock %}
+
+{% block body %}
+
+    <h1 class="my-5">Bonjour et bienvenue {{ app.user }}.</h1>
+
+    {{ form_start(form) }}
+
+    {{ form_end(form) }}
+    <a class ="btn btn-primary m-2 btn-lg" href="{{ path('app_manager_suite_index') }}">Gestions des suites</a>
+{% endblock %}

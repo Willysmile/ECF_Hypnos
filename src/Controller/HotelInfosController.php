@@ -26,7 +26,7 @@ class HotelInfosController extends AbstractController
 
         if (empty($hotel_id) || $hotel_id === null) {
 
-            return $this->render('hotel_registration/NoAssignation.html.twig');
+            return $this->render('hotel_management/NoAssignation.html.twig');
         }
 
 
@@ -45,7 +45,7 @@ class HotelInfosController extends AbstractController
             $entity->flush();
         }
 
-        return $this->render('hotel_registration/index.html.twig', [
+        return $this->render('hotel_management/index.html.twig', [
 
             'form' => $form->createView()
 

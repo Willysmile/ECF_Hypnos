@@ -24,7 +24,7 @@ class ManagerSuiteController extends AbstractController
 
         if (empty($hotel_id) || $hotel_id === null) {
 
-            return $this->render('hotel_registration/NoAssignation.html.twig');
+            return $this->render('hotel_management/NoAssignation.html.twig');
         }
 
         $manager_suite = $suiteRepository->findby(['hotel' => $hotel_id]);
@@ -145,9 +145,14 @@ class ManagerSuiteController extends AbstractController
     #[Route('/images/{id}', name: 'app_manager_image_delete', methods: ['POST'])]
     public function Imagesdelete(Request $request, ImagesSuite $image, ImagesSuiteRepository $suiteRepository): Response
     {
-        $url = $request->server->get("HTTP_REFERER")
-        ;
+        $url = $request->server->get("HTTP_REFERER");
+
         if ($this->isCsrfTokenValid('delete' . $image->getId(), $request->request->get('_token'))) {
+        $nomImage = $this->getParameter('images_directory') . '/' . $image->getName();
+            if (file_exists($nomImage)){
+                unlink($nomImage);
+            }
+
             $suiteRepository->remove($image);
         }
 

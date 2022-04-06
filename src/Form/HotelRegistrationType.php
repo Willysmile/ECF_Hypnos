@@ -20,14 +20,14 @@ class HotelRegistrationType extends AbstractType
                 'disabled' => "true",
                 'attr' => [
                 'class' => "form-control m-2 ",
-                'style' => 'width : 10%'  ]
+                'style' => 'width : 40%'  ]
 
             ])   ->add('address', TextType::class, [
                 'label' => 'L’adresse est :',
                 'disabled' => "true",
                 'attr' => [
-                    'class' => "form-control m-2 ",
-                    'style' => 'width : 10%'  ]
+                    'class' => "form-control m-2 w-50 ",
+                     ]
 
 
             ])
@@ -35,8 +35,7 @@ class HotelRegistrationType extends AbstractType
                 'label' => 'La ville',
                 'disabled' => "true",
                 'attr' => [
-                    'class' => "form-control m-2 ",
-                    'style' => 'width : 10%'  ]
+                    'class' => "form-control m-2 w-50 "]
 
             ])
 
@@ -44,8 +43,8 @@ class HotelRegistrationType extends AbstractType
             ->add('description', TextareaType::class, [
                 'label' => 'Description de l’établissement',
                 'attr' => [
-                    'class' => "form-control m-2 ",
-                    'style' => 'width : 10%'  ]
+                    'class' => "form-control m-2 w-50 ",
+                    'rows' => 8 ]
 
                 ]
             )
