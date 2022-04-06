@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello HotelViewController!{% endblock %}
+
+{% block body %}
+
+<h1>{{ hotel.name }}</h1>
+
+<h2>	{{ hotel.address }}
+	{{ hotel.city }}</h2>
+
+	<p>{{ hotel.description }}</p>
+
+	{% for suite in suites %}
+
+{{ suite.id }}
+{{ suite.nightPrice }}
+{{ suite.description }}
+	{% for suite in suite.images %}
+					<div class="col-md ">
+						<div class="card my-2 w-25" >
+
+							<div class="card-body text-center">
+		<img class="card-img-top" src="{{ asset('/uploads/'~suite.name) }}" alt="Image suite">	</div>
+						</div>
+					</div>
+{% endfor %}
+
+	{% endfor %}
+
+{% endblock %}
