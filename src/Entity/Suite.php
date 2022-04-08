@@ -40,7 +40,21 @@ class Suite
         $this->images = new ArrayCollection();
         $this->bookings = new ArrayCollection();
     }
+    public function __toString(): string
+    {
+        return $this->name;
+    }
 
+    public function jsonSerialize()
+    {
+        return
+            [
+                'name'    => $this->name,
+                'description'     => $this->description,
+                'night_price' => $this->night_price,
+                'hotel' => $this->getHotel()
+            ];
+    }
 
 
     public function getId(): ?int

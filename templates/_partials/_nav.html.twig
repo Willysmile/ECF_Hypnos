@@ -10,42 +10,34 @@
 
 
     <a href="{{ path('app_home') }}" class="btn btn-light p-2 mx-2"> Accueil</a>
-      <a href="{{ path('app_home') }}" class="btn btn-light p-2 mx-2"> Établissement</a>
+
       
 
         {% if is_granted('ROLE_CUSTOMER') %}
 
-      <a href="{{ path('app_home') }}" class="btn btn-light p-2 mx-2">Mon compte</a>
-      <a href="{{ path('app_home') }}" class="btn btn-light bg-lg p-2 mx-2">Réservation</a>
+          <a href="{{ path('app_customer_view_booking') }}" class="btn btn-light p-2 mx-2">Mon compte</a>
+          <a href="{{ path('app_booking_registration') }}" class="btn btn-light bg-lg p-2 mx-2">Réservation</a>
           <a href="{{ path('app_contact_form') }}" class="btn btn-light p-2 mx-2"> Contact</a>
-      <a href="{{ path('app_logout') }}" class="btn btn-light bg-lg p-2 mx-2">Déconnexion</a>
+          <a href="{{ path('app_logout') }}" class="btn btn-light bg-lg p-2 mx-2">Déconnexion</a>
 
-    {% elseif is_granted('ROLE_MANAGER') %}
+        {% elseif is_granted('ROLE_MANAGER') %}
 
-      <a href="{{ path('app_manager_suite_index') }}" class="btn btn-light p-2 mx-2">Mon compte</a>
+          <a href="{{ path('app_manager_suite_index') }}" class="btn btn-light p-2 mx-2">Mon compte</a>
+          <a href="{{ path('app_contact_form') }}" class="btn btn-light p-2 mx-2"> Contact</a>
+          <a href="{{ path('app_logout') }}" class="btn btn-light p-2 mx-2">Déconnexion</a>
 
-      <a href="{{ path('app_home') }}" class="btn btn-light bg-lg p-2 mx-2">Réservation</a>
-      <a href="{{ path('app_contact_form') }}" class="btn btn-light p-2 mx-2"> Contact</a>
-      <a
-          href="{{ path('app_logout') }}" class="btn btn-light p-2 mx-2">Déconnexion</a>
+        {% elseif is_granted('ROLE_ADMIN') %}
 
-    {% elseif is_granted('ROLE_ADMIN') %}
-
-      <a href="{{ path('admin') }}" class="btn btn-light p-2 mx-2">Mon compte</a>
-
-      <a href="{{ path('app_home') }}" class="btn btn-light bg-lg p-2 mx-2">Réservation</a>
-      <a href="{{ path('app_contact_form') }}" class="btn btn-light p-2 mx-2"> Contact</a>
-      <a
-          href="{{ path('app_logout') }}" class="btn btn-light p-2 mx-2">Déconnexion</a>
+          <a href="{{ path('admin') }}" class="btn btn-light p-2 mx-2">Mon compte</a>
+          <a href="{{ path('app_contact_form') }}" class="btn btn-light p-2 mx-2"> Contact</a>
+          <a href="{{ path('app_logout') }}" class="btn btn-light p-2 mx-2">Déconnexion</a>
 
 
-    {% else %}
-      <a href="{{ path('app_login') }}" class="btn btn-light p-2 mx-2">Connexion</a>
-      <a
-          href="{{ path('app_home') }}" class="btn btn-light p-2 mx-2">Inscription</a>
-
-      <a href="{{ path('app_contact_form') }}" class="btn btn-light p-2 mx-2"> Contact</a>
-    {% endif %}
+        {% else %}
+          <a href="{{ path('app_login') }}" class="btn btn-light p-2 mx-2">Connexion</a>
+          <a href="{{ path('app_customer_registration') }}" class="btn btn-light p-2 mx-2">Inscription</a>
+          <a href="{{ path('app_contact_form') }}" class="btn btn-light p-2 mx-2"> Contact</a>
+        {% endif %}
   </div>
   </div>
 
