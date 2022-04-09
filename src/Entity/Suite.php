@@ -26,13 +26,13 @@ class Suite
     #[ORM\Column(type: 'integer')]
     private $night_price;
 
-    #[ORM\ManyToOne(targetEntity: Hotel::class, inversedBy: 'suite')]
+    #[ORM\ManyToOne(targetEntity: Hotel::class, inversedBy: 'suite' )]
     private $hotel;
 
     #[ORM\OneToMany(mappedBy: 'suite', targetEntity: ImagesSuite::class, cascade: ['persist', 'remove'])]
     private $images;
 
-    #[ORM\OneToMany(mappedBy: 'suite', targetEntity: Booking::class)]
+    #[ORM\OneToMany(mappedBy: 'suite', targetEntity: Booking::class, cascade: ['remove'])]
     private $bookings;
 
     public function __construct()

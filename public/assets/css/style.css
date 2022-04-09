@@ -1,0 +1,6 @@
+.vichr_resize_form  img {
+    max-width: 300px;
+    border-radius: 1rem;
+    border: 1px solid red;
+}
+

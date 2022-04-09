@@ -3,12 +3,8 @@
 namespace App\Controller;
 
 use App\Entity\Hotel;
-use App\Entity\Manager;
 use App\Form\HotelRegistrationType;
-use App\Form\ManagerRegistrationType;
-use App\Repository\HotelRepository;
 use Doctrine\ORM\EntityManagerInterface;
-use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -23,6 +19,8 @@ class HotelInfosController extends AbstractController
     {
 
         $hotel_id = $this->getUser()->getHotel();
+
+
 
         if (empty($hotel_id) || $hotel_id === null) {
 
@@ -47,7 +45,7 @@ class HotelInfosController extends AbstractController
 
         return $this->render('hotel_management/index.html.twig', [
 
-            'form' => $form->createView()
+            'form' => $form->createView(),
 
 
         ]);

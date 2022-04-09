@@ -9,8 +9,11 @@ use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ChoiceField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\ImageField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\TextareaField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
+use Vich\UploaderBundle\Form\Type\VichImageType;
 
 class HotelCrudController extends AbstractCrudController
 {
@@ -28,7 +31,16 @@ class HotelCrudController extends AbstractCrudController
             TextEditorField::new('description','Description de l’établissement'),
             TextField::new('address', 'Adresse'),
             TextField::new('city', 'Ville'),
+            ImageField::new('imageName', 'Image')
+                ->onlyOnIndex()
+                ->setBasePath('/images/hotel'),
+            TextareaField::new('imageFile', 'Image', [
+                'mapped' => false])
+                ->onlyOnForms()
+                ->setFormType(VichImageType::class),
+
             AssociationField::new('manager', 'Manager'),
+
         ];
     }
    /* public function configureActions(Actions $actions): Actions
