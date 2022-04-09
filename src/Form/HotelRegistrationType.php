@@ -35,6 +35,7 @@ class HotelRegistrationType extends AbstractType
             ])
 
             ->add('imageFile', VichImageType::class,[
+                'label' => 'Image en avant de l’hotel',
                 'required' => false,
                 'delete_label' => 'Suppression de l’image',
                 'download_link' => false,
