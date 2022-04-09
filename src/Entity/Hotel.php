@@ -7,8 +7,11 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\File\File;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 #[ORM\Entity(repositoryClass: HotelRepository::class)]
+#[Vich\Uploadable]
 class Hotel extends AbstractController
 {
     #[ORM\Id]
@@ -150,4 +153,5 @@ class Hotel extends AbstractController
 
         return $this;
     }
+
 }

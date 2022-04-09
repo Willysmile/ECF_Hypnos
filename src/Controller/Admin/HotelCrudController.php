@@ -31,7 +31,7 @@ class HotelCrudController extends AbstractCrudController
             AssociationField::new('manager', 'Manager'),
         ];
     }
-    public function configureActions(Actions $actions): Actions
+   /* public function configureActions(Actions $actions): Actions
     {
         return $actions
             // ...
@@ -41,5 +41,5 @@ class HotelCrudController extends AbstractCrudController
             ->remove(Crud::PAGE_DETAIL, Action::EDIT)
             ->remove(Crud::PAGE_DETAIL, Action::DELETE)
             ;
-    }
+    }*/
 }
