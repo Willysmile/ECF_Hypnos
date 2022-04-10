@@ -22,6 +22,7 @@ class ContactFormType extends AbstractType
                 'required' => 'true',
                 'attr' => [
                     'class' => "form-control m-2",
+                    'placeholder' => "Merci de saisir votre nom",
                 ]
             ])
             ->add('firstname', TextType::class, [
@@ -29,6 +30,7 @@ class ContactFormType extends AbstractType
                 'required' => 'true',
                 'attr' => [
                     'class' => "form-control m-2",
+                    'placeholder' => "Merci de saisir votre prénom",
                 ]
             ])
 
@@ -41,11 +43,11 @@ class ContactFormType extends AbstractType
                 'attr' => [
                     'placeholder' => "Merci de saisir votre email",
                     'class' => "form-control m-2",
-                    'style' => "width : 50%"
+
                 ]
             ])
             ->add('sujet', ChoiceType::class, [
-                'label' => 'Sujet du message',
+                'label' => 'Sujet de votre message',
                 'choices' => [
                     'Je souhaite poser une réclamation' => 'Je souhaite poser une réclamation',
                     'Je souhaite commander un service supplémentaire' => 'Je souhaite commander un service supplémentaire',
@@ -54,13 +56,14 @@ class ContactFormType extends AbstractType
                 ],
                 'attr' => [
                     'class' => "form-control m-2",
-                    'style' => "width : 50%"
+
                 ]])
             ->add('message', TextareaType::class, [
                 'label' => 'Votre message',
                 'attr' => [
                     'class' => "form-control m-2 ",
-                    'style' => 'width : 10%']
+                    'rows' => 5
+                ]
 
 
             ])

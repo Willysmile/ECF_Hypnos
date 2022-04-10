@@ -4,7 +4,8 @@
 
 {% block body %}
 
-    <h1 class="my-5">Bonjour et bienvenue {{ app.user }}.</h1>
+    <h1 class="h1 my-3">Gestion de votre établissement</h1>
+    <h2 class="my-3 h3">Bonjour et bienvenue {{ app.user }}.</h2>
 
     {{ form_start(form) }}
 
@@ -17,10 +18,14 @@
 
     {{ form_row(form.description) }}
 
-<div class="vichr_resize_form"
-        {{ form_row(form.imageFile) }}
+<div class="vichr_resize_form">
+        {{ form_row(form.imageFile) }}</div>
 
-</div>
+    <div class="d-flex align-items-center">
+{{ form_row(form.submit) }}
+    <a class ="btn btn-lg btn-info  mb-3" href="{{ path('app_manager_suite_index') }}">Aller vers la gestion des suites</a>
+
     {{ form_end(form) }}
-    <a class ="btn btn-primary m-2 btn-lg" href="{{ path('app_manager_suite_index') }}">Gestions des suites</a>
+    </div>
+
 {% endblock %}

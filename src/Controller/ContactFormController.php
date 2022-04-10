@@ -35,14 +35,17 @@ class ContactFormController extends AbstractController
             ;
 
             $mailer->send($mail);
-
+            $notification = 'Merci, votre message a bien été envoyé. Un responsable va prendre contact avec vous d’ici 24h.';
 
         }
 
 
 
         return $this->render('contact_form/index.html.twig', [
-            'form' => $form->createView()
+            'form' => $form->createView(),
+            'notification' => $notification
+
+
         ]);
     }
 }

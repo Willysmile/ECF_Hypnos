@@ -1,21 +1,22 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello ContactFormController!{% endblock %}
+{% block title %}Formulaire de contact{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
 
-<div class="example-wrapper">
-    <h1>Hello {{ app.user }}! ✅</h1>
+    <h1 class="h1 my-4 mx-auto text-center"> Formulaire de contact</h1>
 
-    {{ form(form) }}
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ '/home/willysmile/Bureau/ECF2022/ECF2022/hypnos/hypnos/src/Controller/ContactFormController.php'|file_link(0) }}">src/Controller/ContactFormController.php</a></code></li>
-        <li>Your template at <code><a href="{{ '/home/willysmile/Bureau/ECF2022/ECF2022/hypnos/hypnos/templates/contact_form/index.html.twig'|file_link(0) }}">templates/contact_form/index.html.twig</a></code></li>
-    </ul>
-</div>
+    <p class="w-50 mx-auto ">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores et facere ipsam labore
+        reiciendis repellat?
+        Consectetur culpa dolore doloribus eos eum, fugiat ipsum modi nostrum odio odit placeat unde vero?</p>
+
+    <div class="my-4 w-50 mx-auto">
+        {{ form(form) }}
+        {% if notification %}
+
+            <div class="alert alert-success"><p>{{ notification }}</p></div>
+        {% endif %}
+    </div>
+
+
 {% endblock %}

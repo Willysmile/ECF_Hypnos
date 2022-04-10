@@ -1,3 +1,70 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="{{ path('app_home') }}"><img src="{{ asset('assets/img/logo.svg') }}" alt="Logo TRT Conseil" width="100 px"
+                                                             class="d-inline-block align-text-top"></a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a href="{{ path('app_home') }}" class="btn btn-light p-2 mx-2"> Accueil</a>
+      </li>
+
+
+      {% if is_granted('ROLE_CUSTOMER') %}
+        <li class="nav-item">
+          <a href="{{ path('app_customer_view_booking') }}" class="btn btn-light p-2 mx-2">Mon compte</a>
+        </li>
+        <li class="nav-item">      <a href="{{ path('app_booking_registration') }}" class="btn btn-light bg-lg p-2 mx-2">Réservation</a></li>
+        <li class="nav-item">     <a href="{{ path('app_contact_form') }}" class="btn btn-light p-2 mx-2"> Contact</a></li>
+        <li class="nav-item">      <a href="{{ path('app_logout') }}" class="btn btn-light bg-lg p-2 mx-2">Déconnexion</a></li>
+
+      {% elseif is_granted('ROLE_MANAGER') %}
+
+        <li class="nav-item">    <a href="{{ path('app_hotel_edit') }}" class="btn btn-light p-2 mx-2">Mon compte</a></li>
+        <li class="nav-item">  <a href="{{ path('app_contact_form') }}" class="btn btn-light p-2 mx-2"> Contact</a></li>
+
+        <li class="nav-item">   <a href="{{ path('app_logout') }}" class="btn btn-light p-2 mx-2">Déconnexion</a></li>
+
+      {% elseif is_granted('ROLE_ADMIN') %}
+
+        <li class="nav-item">     <a href="{{ path('admin') }}" class="btn btn-light p-2 mx-2">Mon compte</a></li>
+        <li class="nav-item">     <a href="{{ path('app_contact_form') }}" class="btn btn-light p-2 mx-2"> Contact</a></li>
+        <li class="nav-item">     <a href="{{ path('app_logout') }}" class="btn btn-light p-2 mx-2">Déconnexion</a></li>
+
+
+      {% else %}
+        <li class="nav-item">  <a href="{{ path('app_login') }}" class="btn btn-light p-2 mx-2">Connexion</a></li>
+        <li class="nav-item">   <a href="{{ path('app_customer_registration') }}" class="btn btn-light p-2 mx-2">Inscription</a></li>
+        <li class="nav-item">   <a href="{{ path('app_contact_form') }}" class="btn btn-light p-2 mx-2"> Contact</a></li>
+      {% endif %}
+
+
+    </ul>
+
+  </div>
+</nav>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{#
+
+
 <nav class="navbar navbar-light bg-dark">
   <div class="container-fluid">
     <a class="navbar-brand" href="/">
@@ -8,38 +75,40 @@
     </a>
     <div>
 
-
+<li class="nav-item">
     <a href="{{ path('app_home') }}" class="btn btn-light p-2 mx-2"> Accueil</a>
-
+</li>
       
 
         {% if is_granted('ROLE_CUSTOMER') %}
-
+    <li class="nav-item">
           <a href="{{ path('app_customer_view_booking') }}" class="btn btn-light p-2 mx-2">Mon compte</a>
-          <a href="{{ path('app_booking_registration') }}" class="btn btn-light bg-lg p-2 mx-2">Réservation</a>
-          <a href="{{ path('app_contact_form') }}" class="btn btn-light p-2 mx-2"> Contact</a>
-          <a href="{{ path('app_logout') }}" class="btn btn-light bg-lg p-2 mx-2">Déconnexion</a>
+          </li>
+    <li class="nav-item">      <a href="{{ path('app_booking_registration') }}" class="btn btn-light bg-lg p-2 mx-2">Réservation</a></li>
+     <li class="nav-item">     <a href="{{ path('app_contact_form') }}" class="btn btn-light p-2 mx-2"> Contact</a></li>
+    <li class="nav-item">      <a href="{{ path('app_logout') }}" class="btn btn-light bg-lg p-2 mx-2">Déconnexion</a></li>
 
         {% elseif is_granted('ROLE_MANAGER') %}
 
-          <a href="{{ path('app_hotel_edit') }}" class="btn btn-light p-2 mx-2">Mon compte</a>
-          <a href="{{ path('app_contact_form') }}" class="btn btn-light p-2 mx-2"> Contact</a>
-          <a href="{{ path('app_logout') }}" class="btn btn-light p-2 mx-2">Déconnexion</a>
+      <li class="nav-item">    <a href="{{ path('app_hotel_edit') }}" class="btn btn-light p-2 mx-2">Mon compte</a></li>
+        <li class="nav-item">  <a href="{{ path('app_contact_form') }}" class="btn btn-light p-2 mx-2"> Contact</a></li>
+
+       <li class="nav-item">   <a href="{{ path('app_logout') }}" class="btn btn-light p-2 mx-2">Déconnexion</a></li>
 
         {% elseif is_granted('ROLE_ADMIN') %}
 
-          <a href="{{ path('admin') }}" class="btn btn-light p-2 mx-2">Mon compte</a>
-          <a href="{{ path('app_contact_form') }}" class="btn btn-light p-2 mx-2"> Contact</a>
-          <a href="{{ path('app_logout') }}" class="btn btn-light p-2 mx-2">Déconnexion</a>
+     <li class="nav-item">     <a href="{{ path('admin') }}" class="btn btn-light p-2 mx-2">Mon compte</a></li>
+     <li class="nav-item">     <a href="{{ path('app_contact_form') }}" class="btn btn-light p-2 mx-2"> Contact</a></li>
+     <li class="nav-item">     <a href="{{ path('app_logout') }}" class="btn btn-light p-2 mx-2">Déconnexion</a></li>
 
 
         {% else %}
-          <a href="{{ path('app_login') }}" class="btn btn-light p-2 mx-2">Connexion</a>
-          <a href="{{ path('app_customer_registration') }}" class="btn btn-light p-2 mx-2">Inscription</a>
-          <a href="{{ path('app_contact_form') }}" class="btn btn-light p-2 mx-2"> Contact</a>
+        <li class="nav-item">  <a href="{{ path('app_login') }}" class="btn btn-light p-2 mx-2">Connexion</a></li>
+       <li class="nav-item">   <a href="{{ path('app_customer_registration') }}" class="btn btn-light p-2 mx-2">Inscription</a></li>
+       <li class="nav-item">   <a href="{{ path('app_contact_form') }}" class="btn btn-light p-2 mx-2"> Contact</a></li>
         {% endif %}
   </div>
   </div>
 
-  </div>
+  </div>#}
 </nav>
