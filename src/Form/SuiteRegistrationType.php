@@ -9,6 +9,7 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Vich\UploaderBundle\Form\Type\VichImageType;
 
 
 class SuiteRegistrationType extends AbstractType
@@ -28,14 +29,22 @@ class SuiteRegistrationType extends AbstractType
                     'class' => "form-control m-2",
                 ]
             ])
-            ->add('night_price',FloatType::class,[
+            ->add('night_price', FloatType::class, [
                 'label' => 'Prix de la nuitée',
                 'attr' => [
                     'class' => "form-control m-2",
                 ]
             ])
-            ->add('hotel');
+            ->add('hotel')
 
+            ->add('imageFile', VichImageType::class, [
+                'label' => 'Image en avant de l’hotel',
+                'required' => false,
+                'delete_label' => 'Suppression de l’image',
+                'download_link' => false,
+                'attr' => [
+                    'class' => "form-control m-2 w-50 ",
+                ]]);
 
     }
 

@@ -11,6 +11,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Vich\UploaderBundle\Form\Type\VichImageType;
 
 class SuiteType extends AbstractType
 {
@@ -35,9 +36,18 @@ class SuiteType extends AbstractType
                 'attr' => [
                     'class' => "form-control m-2 w-25",
                 ]
-            ])
+            ])      ->add('imageFile', VichImageType::class, [
+                'label' => 'Image en avant de la suite',
+                'required' => false,
+                'delete_label' => 'Suppression de l’image',
+                'download_link' => false,
+                'attr' => [
+                    'class' => "form-control m-2 w-50 ",
+
+                ]])
+
             ->add('images', FileType::class, [
-                'label' => false,
+                'label' => 'Images de la suite',
                 'multiple' => true,
                 'mapped' => false,
                 'required' => false,
@@ -45,6 +55,7 @@ class SuiteType extends AbstractType
                     'class' => "form-control m-2 w-50",
                 ]
             ]);
+
     }
 
     public function configureOptions(OptionsResolver $resolver): void
