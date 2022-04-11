@@ -1,30 +1,31 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Gestion Hotel {{ hotel.name }}{% endblock %}
+{% block title %}{{ hotel.name }}{% endblock %}
 
 {% block body %}
 
-	<h1>{{ hotel.name }}</h1>
+	<h1 class="h1 my-3-4">{{ hotel.name }}</h1>
 
-	<h2>	{{ hotel.address }}	{{ hotel.city }}</h2>
+	<h2 class="h3 my-2">	{{ hotel.address }}	{{ hotel.city }}</h2>
 
-	<p>{{ hotel.description }}</p>
+
+		<p>{{ hotel.description }}</p>
+
 
 	{% for suite in suites %}
+		<div class="col-md ">
+	<div class="card my-2" >
 
-		{{ suite.id }}
-		{{ suite.nightPrice }}
-		{{ suite.description }}
+{{ dump(suite) }}
 
-			{% for suite in suite.images %}
-					<div class="col-md ">
-						<div class="card my-2 w-25" >
-							<div class="card-body text-center">
-								<img class="card-img-top" src="{{ asset('/uploads/'~suite.name) }}" alt="Image suite">	</div>
-						</div>
-					</div>
-			{% endfor %}
+				<img class="card-img-top" src="{{ asset('/uploads/'~suite.images) }}" alt="Image suite">	</div>
 
+		<div class="card-body text-center">
+			{{ suite.name }}
+			{{ suite.nightPrice }}
+			{{ suite.description }}
+		</div>
+		</div>
 	{% endfor %}
 
 {% endblock %}

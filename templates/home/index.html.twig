@@ -4,8 +4,8 @@
 
 {% block body %}
 
-	<div class="container-fluid w-75">
-		<h1 class="h1 my-3"> Hypnos, les plus beaux hotels pour des séjours romantiques</h1>
+	<div class="container-fluid ">
+		<h1 class="h1 my-3 text-center"> Hypnos, les plus beaux hotels pour des séjours romantiques</h1>
 
 		<div id="carousel" class="carousel slide" data-ride="carousel">
 			<div class="carousel-inner">
@@ -15,7 +15,7 @@
 
 					<div class="carousel-item ">
 						<div class="card">
-							<img class="card-img-top" src="/images/hotel/{{ hotel.imageName }}"
+							<img class="card-img-top img-fluid " src="/images/hotel/{{ hotel.imageName }}"
 									 alt="Photo de l’hotel {{ hotel.name }}">
 							<p class="card-text m-2 d-flex justify-content-around"> Hotel {{ hotel.name }} || {{ hotel.city }}<a
 										href="{{ path('app_hotel_view',{'id' : hotel.id }) }}" class="btn btn-primary">Voir l’hotel</a>
@@ -25,11 +25,11 @@
 			</div>
 			<a class="carousel-control-prev" href="#carousel" role="button" data-slide="prev">
 				<span class="carousel-control-prev-icon" aria-hidden="true"></span>
-				<span class="sr-only">Previous</span>
+				<span class="sr-only">Précédent</span>
 			</a>
 			<a class="carousel-control-next" href="#carousel" role="button" data-slide="next">
 				<span class="carousel-control-next-icon" aria-hidden="true"></span>
-				<span class="sr-only">Next</span>
+				<span class="sr-only">Suivant</span>
 			</a>
 
 		</div>

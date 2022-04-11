@@ -25,20 +25,24 @@ class CustomerRegistrationType extends AbstractType
                     'max' => 60]),
                 'attr' => [
                     'placeholder' => "Merci de saisir votre email",
-                    'class' => "form-control m-2",
-                    'style' => "width : 50%"
+                    'class' => "form-control m-2 ",
+
                 ]
             ])
             ->add('firstname', TextType::class, [
                 'label' => 'Mon prénom',
+
                 'attr' => [
-                    'class' => "form-control m-2",
+                    'class' => "form-control m-2 ",
+                    'placeholder' => "Merci de saisir votre prénom",
                 ]
             ])
             ->add('lastname', TextType::class, [
                 'label' => 'Mon nom',
+
                 'attr' => [
-                    'class' => "form-control m-2",
+                    'class' => "form-control m-2 ",
+                    'placeholder' => "Merci de saisir votre nom",
                 ]
             ])
             ->add('password', RepeatedType::class, [
@@ -51,13 +55,13 @@ class CustomerRegistrationType extends AbstractType
                 ]),
                 'first_options' => ['label' => 'Mot de passe', 'attr' => [
                     'placeholder' => "Merci de saisir votre mot de passe",
-                    'class' => "form-control m-2",
-                    'style' => "width : 50%"
+                    'class' => "form-control m-2 ",
+
                 ]],
                 'second_options' => ['label' => 'Confirmation du mot de passe', 'attr' => [
                     'placeholder' => "Merci de confirmer votre mot de passe",
-                    'class' => "form-control m-2",
-                    'style' => "width : 50%"
+                    'class' => "form-control m-2 ",
+
                 ]],
             ])
             ->add('submit', SubmitType::class, [

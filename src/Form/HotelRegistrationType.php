@@ -9,7 +9,6 @@ use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Vich\UploaderBundle\Form\Type\VichFileType;
 use Vich\UploaderBundle\Form\Type\VichImageType;
 
 class HotelRegistrationType extends AbstractType
@@ -21,8 +20,8 @@ class HotelRegistrationType extends AbstractType
                 'label' => 'Le nom de votre établissement est :',
                 'disabled' => "true",
                 'attr' => [
-                'class' => "form-control m-2 ",
-                'style' => 'width : 40%'  ]
+                    'class' => "form-control m-2 w-50",
+                ]
 
             ])   ->add('address', TextType::class, [
                 'label' => 'L’adresse est :',

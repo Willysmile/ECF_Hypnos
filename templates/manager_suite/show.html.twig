@@ -1,35 +1,31 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Suite{% endblock %}
+{% block title %}Suite {{ suite.name }}{% endblock %}
 
 {% block body %}
-    <h1>Suite</h1>
+    <h1 class="h1 m-4">Suite {{ suite.name }}</h1>
 
     <table class="table">
         <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ suite.id }}</td>
-            </tr>
-            <tr>
-                <th>Name</th>
-                <td>{{ suite.name }}</td>
-            </tr>
-            <tr>
-                <th>Description</th>
-                <td>{{ suite.description }}</td>
-            </tr>
-            <tr>
-                <th>Night_price</th>
-                <td>{{ suite.nightPrice }} €</td>
-            </tr>
+        <tr>
+            <th scope="row">Hotel</th>
+            <td>{{ suite.hotel }}</td>
+        </tr>
+        <tr>
+            <th scope="row">Description de la suite</th>
+            <td>{{ suite.description }}</td>
+        </tr>
+        <tr>
+            <th scope="row">Prix de la nuitée</th>
+            <td>{{ suite.nightPrice }} €</td>
+        </tr>
         </tbody>
     </table>
 
     <a class="btn btn-primary m-2 " href="{{ path('app_manager_suite_index') }}">Retour à la liste</a>
 
     <a class="btn btn-primary m-2 " href="{{  path('app_manager_suite_edit', {'id': suite.id}) }}">Edition</a>
-    <h2>Images</h2>
+    <h2 class="h2 mt-3">Images</h2>
 
     <div class="container d-flex">
         <div class="row ">
@@ -37,7 +33,7 @@
             {% for suite in suite.images %}
                 <div class="col-md ">
 
-                    <div class="card my-2" style="width: 200px;">
+                    <div class="card my-2">
                         <img class="card-img-top" src="{{ asset('/uploads/'~suite.name) }}" alt="Image suite">
 
                     </div>

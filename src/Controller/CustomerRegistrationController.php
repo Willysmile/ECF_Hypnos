@@ -28,13 +28,15 @@ class CustomerRegistrationController extends AbstractController
 
             $entity->persist($user);
             $entity->flush();
-
+            $notification = "Votre inscription à bien été prise en compte, vous pouvez vous connecter dès maintenant";
 
 
         }
 
 
-        return $this->render('customer_registration/index.html.twig', ['form' => $form->createView()]
-        );
+        return $this->render('customer_registration/index.html.twig', [
+            'form' => $form->createView(),
+            'notification' => $notification
+        ]);
     }
 }

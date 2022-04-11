@@ -2,7 +2,7 @@
 {% block title %}Edit Suite{% endblock %}
 
 {% block body %}
-  <h1 class="my-5">Editer les suites</h1>
+  <h1 class="my-5 h1">Editer les suites</h1>
 
   {{ include('manager_suite/_form.html.twig', {'button_label': 'Valider les informations'}) }}
 <div class="d-flex my-4">
@@ -13,12 +13,12 @@
 
   <div class="container d-flex my-5">
     <div class="row ">
-      {% if suite.images is not empty %}<h2>Images</h2>
+      {% if suite.images is not empty %}<h2 class="h2 m-2">Images</h2>
       {% endif %}
   {% for suite in suite.images %}
     <div class="col-md ">
-      <div class="card my-2" style="width: 200px;">
-        <img class="card-img-top" src="{{ asset('/uploads/'~suite.name) }}" alt="Image suite">
+      <div class="card my-2" style="width: 300px;">
+        <img class="card-img-top" src="{{ asset('/uploads/'~suite.name) }}" alt="Image suite {{ suite.suite.name }}">
         <div class="card-body text-center">
 
           {{ include('manager_suite/_delete_images.html.twig') }}
