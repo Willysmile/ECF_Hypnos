@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste de nos établissement{% endblock %}
+
+{% block body %}
+ <h1>Liste de nos établissements</h1>
+    {% for hotel in hotels %}
+
+
+            <div class="card m-2">
+                <h2 class="h3">Hotel {{ hotel.name }} || {{ hotel.city }}</h2>
+                <img class="card-img-top img-fluid " src="/images/hotel/{{ hotel.imageName }}"
+                     alt="Photo de l’hotel {{ hotel.name }}">
+                <a href="{{ path('app_hotel_view',{'id' : hotel.id }) }}" class="btn btn-primary">Voir l’hotel</a>
+
+            </div>
+
+    {% endfor %}
+{% endblock %}
