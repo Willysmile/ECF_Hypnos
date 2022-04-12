@@ -6,7 +6,7 @@
  */
 
 // any CSS you import will output into a single css file (app.css in this case)
-import './styles/scss/app.scss';
+import './styles/scss/_custom.scss';
 import 'bootstrap';
 import bsCustomFileInput from 'bs-custom-file-input';
 

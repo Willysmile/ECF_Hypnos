@@ -1,0 +1,25 @@
+
+
+.form-images label{
+  font-size: 1.3rem;
+  margin: 10px 0;
+
+}
+
+.vichr_resize_form legend{
+  font-size: 1.3rem;
+}
+
+.vichr_resize_form label{
+  font-size: 1rem;
+}
+
+.vichr_resize_form  img {
+  max-width: 300px;
+  border-radius: 1rem;
+  border: 1px solid red;
+}
+
+@import "variables.scss";
+@import "./node_modules/bootstrap/scss/bootstrap";
+@import "bootswatch.scss";
