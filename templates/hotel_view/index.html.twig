@@ -6,26 +6,32 @@
 
 	<h1 class="h1 my-3-4">{{ hotel.name }}</h1>
 
-	<h2 class="h3 my-2">	{{ hotel.address }}	{{ hotel.city }}</h2>
-
+	<h2 class="h2 my-2">		{{ hotel.city }}</h2>
+	<img class="img-fluid " src="{{ asset('/images/hotel/'~hotel.imageName) }}" alt="Image de l'Hôtel {{ hotel.name }} ">
 
 		<p>{{ hotel.description }}</p>
-
+<p>Adresse : {{ hotel.address }} à  {{ hotel.city }}</p>
 
 	{% for suite in suites %}
 		<div class="col-md ">
-	<div class="card my-2" >
+		<div class="card my-4 w-75 h-75 mx-auto " >
 
-{{ dump(suite) }}
+				<img class="card-img-top img-fluid " src="{{ asset('/images/hotel/'~suite.imageName) }}" alt="Image de la suite {{ suite.name }} ">
 
-				<img class="card-img-top" src="{{ asset('/uploads/'~suite.images) }}" alt="Image suite">	</div>
+		<div class="card-body ">
+			<div class="col">
+				<div class=row><span class="h4 m-1">Suite {{ suite.name }} </span>  			<p>{{ suite.description }}</p></div>
+				<div class="d-flex align-items-center justify-content-end "
+				>{{ suite.nightPrice }} € la nuit
 
-		<div class="card-body text-center">
-			{{ suite.name }}
-			{{ suite.nightPrice }}
-			{{ suite.description }}
+					<a href="{{ path('app_booking_registration', {'id': suite.id}) }}" class="btn btn-info ms-4">Réserver</a>
+
+				</div>
+
+
 		</div>
 		</div>
+		</div></div>
 	{% endfor %}
 
 {% endblock %}

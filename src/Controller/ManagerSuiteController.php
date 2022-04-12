@@ -95,6 +95,7 @@ class ManagerSuiteController extends AbstractController
 
         $form = $this->createForm(SuiteType::class, $suite);
         $form->handleRequest($request);
+        $notification = null;
 
         if ($form->isSubmitted() && $form->isValid()) {
 
@@ -116,7 +117,7 @@ class ManagerSuiteController extends AbstractController
                 $img->setName($fichier);
                 $suite->addImage($img);
             }
-
+            $notification = 'Vos informations ont bien été mises à jour';
 
             $entity->persist($suite);
             $entity->flush();
@@ -128,6 +129,7 @@ class ManagerSuiteController extends AbstractController
         return $this->renderForm('manager_suite/edit.html.twig', [
             'suite' => $suite,
             'form' => $form,
+            'notification' => $notification
         ]);
     }
 
