@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello SuiteListController!{% endblock %}
+
+{% block body %}
+
+
+  <div>
+    <img class="img-fluid my-3 " src="{{ asset('./images/suite/'~suite.imageName) }}"
+         alt="Photo de la suite {{ suite.name }}">
+  </div>
+  <h1>Suite {{ suite.name }}</h1>
+  <p>{{ suite.description }}</p>
+  <div class="d-flex justify-content-end">
+    <a href="{{ path('app_booking_registration', {'id': suite.id}) }}"
+       class="btn btn-info mb-4">Réserver</a>
+  </div>
+
+  {% for suite in suite.images %}
+
+
+
+    <div class="card my-3">
+      <img class="card-img-top img-fluid  " src="{{ asset('/uploads/'~suite.name) }}"
+           alt="Photo de la suite {{ suite.suite.name }}">
+
+    </div>
+
+  {% endfor %}
+{% endblock %}

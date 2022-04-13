@@ -21,35 +21,29 @@ class BookingRegistrationController extends AbstractController
     public function index(Request $request, SuiteRepository $suiteRepository, EntityManagerInterface $entity, HotelRepository $hotelRepository): Response
     {
 
-$hotel = $hotelRepository->findAll();
-$suite = $suiteRepository->findAll();
+        $hotel = $hotelRepository->findAll();
+        $suites = $suiteRepository->findAll();
 
-
-
-
-
-$user = $this->getUser();
-
-
-
+        $user = $this->getUser();
         $booking = new Booking();
-
         $form = $this->createForm(BookingformType::class,$booking);
 
-        $notification = null;
+
+
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
 
-            $booking->setCustomer($user);
+            $entity->setUser($user);
             $entity->persist($booking);
             $entity->flush();
         }
 
             return $this->render('booking_registration/index.html.twig', [
                 'form' => $form->createView(),
-                'hotel' => $hotel,
-                'suite' => $suite,
+                'hotels' => $hotel,
+                'suites' => $suites
+
             ]);
         }
     #[Route('/{id}', name: 'app_booking_delete', methods: ['POST'])]

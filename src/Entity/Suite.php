@@ -180,7 +180,7 @@ class Suite
     /**
      * NOTE: This is not a mapped field of entity metadata, just a simple property.
      *
-     * @Vich\UploadableField(mapping="hotel_images", fileNameProperty="imageName", size="imageSize")
+     * @Vich\UploadableField(mapping="suites_images", fileNameProperty="imageName", size="imageSize")
      *
      * @var File|null
      */
