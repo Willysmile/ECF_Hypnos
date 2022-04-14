@@ -32,7 +32,7 @@ class HotelCrudController extends AbstractCrudController
             TextField::new('address', 'Adresse'),
             TextField::new('city', 'Ville'),
             ImageField::new('imageName', 'Image')
-
+                ->onlyOnIndex()
                 ->setBasePath('/images/hotel'),
 
 
