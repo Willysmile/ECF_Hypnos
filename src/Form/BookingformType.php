@@ -25,6 +25,7 @@ class BookingformType extends AbstractType
             ->add('StartDate', DateType::class)
             ->add('EndDate', DateType::class);
 
+
     }
 
     public function configureOptions(OptionsResolver $resolver): void

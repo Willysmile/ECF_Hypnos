@@ -3,14 +3,14 @@
 namespace App\Controller;
 
 use App\Entity\Booking;
-use App\Entity\Suite;
 use App\Form\BookingformType;
-use App\Form\ContactFormType;
 use App\Repository\BookingRepository;
 use App\Repository\HotelRepository;
 use App\Repository\SuiteRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -23,18 +23,18 @@ class BookingRegistrationController extends AbstractController
 
         $hotel = $hotelRepository->findAll();
         $suites = $suiteRepository->findAll();
-
+        $notification = null;
         $user = $this->getUser();
         $booking = new Booking();
         $form = $this->createForm(BookingformType::class,$booking);
 
 
-
         $form->handleRequest($request);
+
 
         if ($form->isSubmitted() && $form->isValid()) {
 
-            $entity->setUser($user);
+            $booking->setCustomer($user);
             $entity->persist($booking);
             $entity->flush();
         }
@@ -42,10 +42,32 @@ class BookingRegistrationController extends AbstractController
             return $this->render('booking_registration/index.html.twig', [
                 'form' => $form->createView(),
                 'hotels' => $hotel,
-                'suites' => $suites
+                'suites' => json_encode($suites),
+                'notification' => $notification
 
             ]);
-        }
+
+    }
+    /**
+     * @Route("/api/booking", name="api_booking", methods={"GET"})
+     *
+     */
+public function api(Request $request, SuiteRepository $suiteRepository)
+{
+
+        $hotel_id = $request->query->get('hotel_id');
+
+        $suites = $suiteRepository->findBy(['id' => $hotel_id]);
+
+
+
+        $response = new Response();
+        $response->setContent(json_encode($hotel_id))      ;
+
+        return $response ;
+    }
+
+
     #[Route('/{id}', name: 'app_booking_delete', methods: ['POST'])]
     public function delete(Request $request, Booking $booking, BookingRepository $bookingRepository): Response
     {

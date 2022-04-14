@@ -9,15 +9,16 @@
 
 
   {{ form_start(form) }}
-  <div>
+  <div id="select-hotel">
     <label for="hotel">Choisissez l’hotel désiré</label>
     <select id="hotel" name="hotel">
       <option value="0">---Choisissez votre hotel---</option>
       {% for hotel in hotels %}
-        {{ dump(hotel.name) }}
-        <option value="{{ hotel.id }}">{{ hotel.name }}</option>
+             <option value="{{ hotel.id }}">{{ hotel.name }}</option>
       {% endfor %}
-
+{% if notification %}
+      {{ notification }}
+      {% endif %}
 
     </select>
   </div>
@@ -27,15 +28,48 @@
     <select id="suite" name="suite">
     </select>
   </div>
+    <button type="submit"  class="btn btn-primary">Essai</button>
 
-  <script>
+
+  <script type="text/javascript">
     $('#select-suite').on('load').hide();
+
     $('#hotel').on('change', function() {
       $('#select-suite').show();
+
       if ($('#hotel').val() == 0) {
         $('#select-suite').hide();
       }
-    });
+      let hotel_id = ($('#hotel').val());
+      let form = new FormData();
+      form.append('hotel_id', JSON.stringify(hotel_id));
+      let myInit = {
+        method: 'POST',
+        mode: 'cors',
+        body: JSON.stringify(form),
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
+        }
+      };
+
+      fetch('../api/booking').then(resp => resp.json())
+          .then(response => {
+                console.log(response);
+              }
+          );
+
+
+    })
+
+
+    $('form').submit(async function(e) {
+      e.preventDefault();
+
+
+
+        console.log('test');
+
+      })
 
 
   </script>
