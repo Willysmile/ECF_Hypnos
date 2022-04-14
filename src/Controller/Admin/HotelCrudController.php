@@ -32,12 +32,9 @@ class HotelCrudController extends AbstractCrudController
             TextField::new('address', 'Adresse'),
             TextField::new('city', 'Ville'),
             ImageField::new('imageName', 'Image')
-                ->onlyOnIndex()
-                ->setBasePath('/images/hotel'),
-            TextareaField::new('imageFile', 'Image', [
-                'mapped' => false])
 
-                ->setFormType(VichImageType::class),
+                ->setBasePath('/images/hotel'),
+
 
             AssociationField::new('manager', 'Manager'),
 
