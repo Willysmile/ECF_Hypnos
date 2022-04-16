@@ -4,8 +4,10 @@
 
 {% block body %}
  <h1>Liste de nos établissements</h1>
-    {% for hotel in hotels %}
 
+  <div class="row d-flex mx-auto">
+    {% for hotel in hotels %}
+      <div class="col-md-6 ">
       <h2 class="h3 ms-3">Hotel {{ hotel.name }} || {{ hotel.city }}</h2>
             <div class="card m-2">
 
@@ -14,6 +16,6 @@
                 <a href="{{ path('app_hotel_view',{'id' : hotel.id }) }}" class="btn btn-primary">Voir l’hotel</a>
 
             </div>
-
-    {% endfor %}
+      </div>
+    {% endfor %}</div>
 {% endblock %}

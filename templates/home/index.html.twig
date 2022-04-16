@@ -17,8 +17,8 @@
 						<div class="card">
 							<img class="card-img-top img-fluid " src="/images/hotel/{{ hotel.imageName }}"
 									 alt="Photo de l’hotel {{ hotel.name }}">
-							<p class="card-text m-2 d-flex justify-content-around"> Hotel {{ hotel.name }} || {{ hotel.city }}<a
-										href="{{ path('app_hotel_view',{'id' : hotel.id }) }}" class="btn btn-primary">Voir l’hotel</a>
+							<div class="card-text m-2 d-flex justify-content-around h4 align-items-center"> Hotel {{ hotel.name }}  ||  {{ hotel.city }}<a
+										href="{{ path('app_hotel_view',{'id' : hotel.id }) }}" class="btn btn-primary">Voir l’hotel</a></div>
 						</div>
 					</div>
 				{% endfor %}
