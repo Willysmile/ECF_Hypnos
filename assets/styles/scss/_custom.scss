@@ -30,6 +30,6 @@ h2,h3,h4,h5,h6 {
   border: 1px solid red;
 }
 
-@import "variables.scss";
-@import "./node_modules/bootstrap/scss/bootstrap";
-@import "bootswatch.scss";
+@import "./assets/styles/scss/simplex/_variables.scss";
+@import "./node_modules/bootstrap/scss/bootstrap.scss";
+@import "./assets/styles/scss/simplex/_bootswatch.scss";
