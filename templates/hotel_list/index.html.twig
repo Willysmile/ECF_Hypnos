@@ -3,12 +3,12 @@
 {% block title %}Liste de nos établissement{% endblock %}
 
 {% block body %}
- <h1>Liste de nos établissements</h1>
+ <h1 class="m-3">Liste de nos établissements</h1>
 
   <div class="row d-flex mx-auto">
     {% for hotel in hotels %}
-      <div class="col-md-6 ">
-      <h2 class="h3 ms-3">Hotel {{ hotel.name }} || {{ hotel.city }}</h2>
+      <div class="col-md-6 my-2 ">
+      <h2 class="h3 ms-3">Hotel {{ hotel.name }} ♥ ♥ ♥ ♥ {{ hotel.city }}</h2>
             <div class="card m-2">
 
                 <img class="card-img-top img-fluid " src="/images/hotel/{{ hotel.imageName }}"

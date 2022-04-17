@@ -9,11 +9,12 @@
     <img class="img-fluid my-3 " src="{{ asset('./images/suite/'~suite.imageName) }}"
          alt="Photo de la suite {{ suite.name }}">
   </div>
-  <h1>Suite {{ suite.name }}</h1>
+  <h1>{{ suite.name }}</h1>
   <p>{{ suite.description }}</p>
   <div class="d-flex justify-content-end">
     <a href="{{ path('app_booking_registration', {'id': suite.id}) }}"
-       class="btn btn-info mb-4">Réserver</a>
+       class="btn btn-info me-2">Réserver</a>
+    <a href="{{ path('app_hotel_view',{'id' : suite.hotel.id }) }}" class="btn btn-primary">Retourner à l’hôtel</a>
   </div>
 
   {% for suite in suite.images %}
@@ -27,4 +28,6 @@
     </div>
 
   {% endfor %}
+
+
 {% endblock %}

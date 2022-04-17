@@ -3,7 +3,7 @@
 {% block title %}Suite {{ suite.name }}{% endblock %}
 
 {% block body %}
-    <h1 class="h1 m-4">Suite {{ suite.name }}</h1>
+    <h1 class="h1 my-4">{{ suite.name }}</h1>
 
     <table class="table">
         <tbody>
@@ -25,6 +25,15 @@
     <a class="btn btn-primary m-2 " href="{{ path('app_manager_suite_index') }}">Retour à la liste</a>
 
     <a class="btn btn-primary m-2 " href="{{  path('app_manager_suite_edit', {'id': suite.id}) }}">Edition</a>
+
+
+<div>
+    <h2 class="h2 mt-3">Image à la Une</h2>
+        <img class="img-fluid w-50" src="{{ asset('/images/suite/'~suite.Imagename) }}" alt="Image suite">
+    </div>
+
+
+
     <h2 class="h2 mt-3">Images</h2>
 
     <div class="container d-flex">
