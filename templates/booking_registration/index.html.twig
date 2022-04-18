@@ -8,35 +8,93 @@
 
 
 
-  {{ form_start(form) }}
-  <div id="select-hotel">
-    <label for="hotel">Choisissez l’hotel désiré</label>
-    <select id="hotel" name="hotel">
-      <option value="0">---Choisissez votre hotel---</option>
-      {% for hotel in hotels %}
-             <option value="{{ hotel.id }}">{{ hotel.name }}</option>
-      {% endfor %}
-{% if notification %}
-      {{ notification }}
-      {% endif %}
+	{{ form_start(form) }}
+	<div id="select-hotel form-group my-3 ">
+		<label for="hotel" class="form-label">Choisissez l’hotel désiré</label>
+		<select id="hotel" name="hotel" class="form-control w-50">
+			<option value="0">---Choisissez votre hotel---</option>
+			{% for hotel in hotels %}
+				<option value="{{ hotel.id }}">{{ hotel.name }}</option>
+			{% endfor %}
+			{% if notification %}
+				{{ notification }}
+			{% endif %}
 
-    </select>
-  </div>
+		</select>
+	</div>
 
-  <div id="select-suite">
-    <label for="suite">Choisissez la suite désirée</label>
-    <select id="suite" name="suite">
-    </select>
-  </div>
-    <button type="submit"  class="btn btn-primary">Essai</button>
+	<div id="select-suite"  class="form-group my-3">
+		<label for="suite" class="form-label">Choisissez la suite désirée</label>
+		<select id="suite" name="suite" class="form-control w-50">
+		</select>
+	</div>
+	<button type="submit" id="submit" class="btn btn-primary my-4">Valider la réservation</button>
+	{{ form_end(form) }}
+
+	<script type="text/javascript">
+
+      // Désactive le select suite au chargement
+      $('#select-suite').hide();
+      // function d’affichage du select suite et de ses données
+      $('#hotel').on('change', function () {
+          let hotel_id = $('#hotel').val();
+          $('#suite').empty();
+          async function selectSuites() {
+              let selectedSuites = await getSuites(hotel_id);
+              selectedSuites.forEach(suite => {
+                  $('#suite').append($('<option>', {
+                      value: suite.id,
+                      text: suite.name
+                  }))
+              })
+          }
+          selectSuites();
+          setTimeout("$('#select-suite').show()",1500);
+          if ($('#hotel').val() === '0') {
+              $('#select-suite').hide();
+          }
+      })
 
 
 
+      // Fonction pour récupérer les données des suites dans un controller dédié
+      async function getSuites(hotel_id) {
+          let response = await fetch("{{ path('app_api') }}", {method: 'get'});
+          if (response.status === 200) {
+              let data = await response.json();
+
+              let filterResponse = [];
+              for (let i = 0; i < data.suite.length; i++) {
+                  if (data.suite[i]['hotel_id'] == hotel_id) {
+                      filterResponse.push(data.suite[i]);
+                  }
+              }
+              return filterResponse;
+          }
+      }
+
+      function handleSubmit() {
 
 
+          const data = new FormData(event.target);
+          const value = data.get('suite');
+          fetch("{{ path('app_booking_registration') }}",
+              {
+                  headers: {
+                      'Accept': 'application/json',
+                      'Content-Type': 'application/json'
+                  },
+                  method: "GET",
+                  body: (value)
+              })
+              .then(function(res){ console.log(res) })
+              .catch(function(res){ console.log(res) })
 
+                }
+      const form = document.querySelector('form');
+      form.addEventListener('submit', handleSubmit);
 
-  {{ form_end(form) }}
+	</script>
 
 {% endblock %}
 

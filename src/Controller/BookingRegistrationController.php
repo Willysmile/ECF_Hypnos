@@ -22,49 +22,54 @@ class BookingRegistrationController extends AbstractController
     {
 
         $hotel = $hotelRepository->findAll();
-        $suites = $suiteRepository->findAll();
+
         $notification = null;
         $user = $this->getUser();
         $booking = new Booking();
-        $form = $this->createForm(BookingformType::class,$booking);
+        $form = $this->createForm(BookingformType::class, $booking);
+
 
 
         $form->handleRequest($request);
 
 
         if ($form->isSubmitted() && $form->isValid()) {
-
+            $idSuite = $request->request->get('suite');
+            $booking->setSuite($suiteRepository->find(['id' => $idSuite]));
             $booking->setCustomer($user);
             $entity->persist($booking);
             $entity->flush();
         }
 
-            return $this->render('booking_registration/index.html.twig', [
-                'form' => $form->createView(),
-                'hotels' => $hotel,
-                'suites' => json_encode($suites),
-                'notification' => $notification
+        return $this->render('booking_registration/index.html.twig', [
+            'form' => $form->createView(),
+            'hotels' => $hotel,
 
-            ]);
+            'notification' => $notification
+
+        ]);
 
     }
-    /**
-     * @Route("/api/booking", name="api_booking", methods={"GET"})
-     *
-     */
-public function api(Request $request, SuiteRepository $suiteRepository)
-{
 
-        $hotel_id = $request->query->get('hotel_id');
+    #[Route('/suite/api/', name: 'app_api', methods: ["GET"])]
+    public function findSuite(SuiteRepository $suiteRepository)
+    {
 
-        $suites = $suiteRepository->findBy(['id' => $hotel_id]);
-
-
-
+        $listeSuite = $suiteRepository->findAll();
+        $listeResponse = array();
+        foreach ($listeSuite as $suite) {
+            $listeResponse[] = array(
+                'id' => $suite->getId(),
+                'name' => $suite->getName(),
+                'night_price' => $suite->getNightPrice(),
+                'hotel_id' => $suite->getHotel()->getId(),
+            );
+        }
         $response = new Response();
-        $response->setContent(json_encode($hotel_id))      ;
-
-        return $response ;
+        $response->setContent(json_encode(array('suite'=>$listeResponse)));
+        $response->headers->set("Content-Type", "application/json");
+        $response->headers->set("Access-Control-Allow-Origin", "*");
+        return $response;
     }
 
 
@@ -76,6 +81,6 @@ public function api(Request $request, SuiteRepository $suiteRepository)
             $bookingRepository->remove($booking);
         }
 
-        return $this->redirectToRoute('app_customer_view_booking', [],Response::HTTP_SEE_OTHER);
+        return $this->redirectToRoute('app_customer_view_booking', [], Response::HTTP_SEE_OTHER);
     }
 }

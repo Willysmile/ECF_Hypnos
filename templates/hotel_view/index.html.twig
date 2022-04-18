@@ -4,13 +4,13 @@
 
 {% block body %}
 
-	<h1 class="h1 my-3">{{ hotel.name }}</h1>
-
-	<h2 class="h2 my-2">		{{ hotel.city }}</h2>
-	<img class="img-fluid " src="{{ asset('/images/hotel/'~hotel.imageName) }}" alt="Image de l'Hôtel {{ hotel.name }} ">
+	<h1 class="h1 my-3 ms-5">{{ hotel.name }} </h1>
+	<h2 class="h2 my-2 ms-5">		{{ hotel.city }}</h2>
+	<div class="d-flex flex-column align-items-center">
+	<img class="img-fluid " style="max-width: 900px" src="{{ asset('/images/hotel/'~hotel.imageName) }}" alt="Image de l'Hôtel {{ hotel.name }} ">
 
 		<p class="w-75 m-2">{{ hotel.description }}</p>
-<p class="m-2">Adresse : {{ hotel.address }} à  {{ hotel.city }}</p>
+<p class="m-2">Adresse : {{ hotel.address }} à  {{ hotel.city }}</p></div>
 	<hr>
 	<div class="container">
 	<h3 class="h3 text-center my-3">Nos suites</h3>
