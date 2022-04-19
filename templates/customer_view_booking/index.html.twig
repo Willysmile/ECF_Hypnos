@@ -3,46 +3,52 @@
 {% block title %}Vos réservations{% endblock %}
 
 {% block body %}
+	<div class="container w-75">
+		<h1 class="h1 my-4">Vue d’ensemble de vos réservations</h1>
 
-    <h1 class="h1 my-4">Vue d’ensemble de vos réservations</h1>
+		<h2 class="h3 my-2">Retrouvez-ici l’historique de l’ensemble de vos réservations.</h2>
 
-    <h2 class="h3 my-2">Retrouvez-ici l’historique de l’ensemble de vos réservations.</h2>
-
-    <p class="mt-5">Nous vous rappelons que la date limite pour annuler est de J-3 avant le début du séjour</p>
-
-
-    {% if bookings %}
-{% for booking in bookings %}
+		<p class="mt-5">Nous vous rappelons que la date limite pour annuler est de J-3 avant le début du séjour</p>
 
 
-    <div class="card">
-        <div class="card-body">
-            {{ booking.suite.hotel }}
-            {{ booking.suite.name }}
+		{% if bookings %}
+			{% for booking in bookings %}
 
 
-            {{ booking.StartDate |date('d-m-Y')}}
-            {{ booking.EndDate |date('d-m-Y')}}
+				<div class="card w-75 text-center mx-auto mt-5">
+					<div class="card-body">
+						<h4>Hotel {{ booking.suite.hotel }} à  {{ booking.suite.hotel.city }} </h4>
+						<h5>{{ booking.suite.name }}</h5>
+
+						<p>Séjour du {{ booking.StartDate |date('d-m-Y') }} au {{ booking.EndDate |date('d-m-Y') }} || Prix de la nuitée : {{booking.suite.nightPrice}} €</p>
 
 
-            <form method="post" action="{{ path('app_booking_delete', {'id': booking.id}) }}" onsubmit="return confirm('Êtes vous sur de vouloir annuler cette réservation ?');">
-                <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ booking.id) }}">
+						<form method="post" action="{{ path('app_booking_delete', {'id': booking.id}) }}"
+									onsubmit="return confirm('Êtes vous sur de vouloir annuler cette réservation ?');">
+							<input type="hidden" name="_token" value="{{ csrf_token('delete' ~ booking.id) }}">
 
-                {% if date(booking.StartDate) >= date('+3days') %}
-                     <button class="btn">Annulation de la réservation</button>
-                {% else %}
-                     <button class="btn disabled">Annulation de la réservation impossible</button>
-                {% endif %}
-            </form>
-        </div>
-    </div>
+							{% if date(booking.StartDate) >= date('+3days') %}
+								<button class="btn btn-info">Annulation de la réservation</button>
+							{% else %}
+								<button class="btn btn-danger disabled">Annulation de la réservation impossible</button>
+							{% endif %}
+						</form>
+					</div>
+				</div>
 
-    {% endfor %}
-    {% else %}
-        <h3 class="alert alert-danger m-5 w-75"><strong> Désolé, aucune réservation en cours ou passée enregistrée sur votre compte</strong></h3>
-{% endif %}
+			{% endfor %}
+		{% else %}
+			<h3 class="alert alert-danger m-5 w-75"><strong> Désolé, aucune réservation en cours ou passée enregistrée sur
+					votre compte</strong></h3>
+		{% endif %}
+
+
+	</div>
+	</div>
+
+	<script>
 
 
 
-</div>
+	</script>
 {% endblock %}

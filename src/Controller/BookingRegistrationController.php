@@ -32,13 +32,26 @@ class BookingRegistrationController extends AbstractController
 
         $form->handleRequest($request);
 
-
         if ($form->isSubmitted() && $form->isValid()) {
+            $request_start_date = $request->request->get('startDate');
+            $request_end_date = $request->request->get('endDate');
+
+
+            $date_start= new \DateTime();
+            $date_start->setTimestamp(strtotime($request_start_date));
+
+            $date_end= new \DateTime();
+            $date_end->setTimestamp(strtotime($request_end_date));
+
+
             $idSuite = $request->request->get('suite');
             $booking->setSuite($suiteRepository->find(['id' => $idSuite]));
             $booking->setCustomer($user);
+            $booking->setStartDate($date_start);
+            $booking->setEndDate($date_end);
             $entity->persist($booking);
             $entity->flush();
+            $notification = 'Votre réservation à bien été prise en compte, retrouvez-la dans votre espace personnel';
         }
 
         return $this->render('booking_registration/index.html.twig', [
