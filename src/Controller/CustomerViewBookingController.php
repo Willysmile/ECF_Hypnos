@@ -9,7 +9,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class CustomerViewBookingController extends AbstractController
 {
-    #[Route('/customer/view/booking/', name: 'app_customer_view_booking')]
+    #[Route('/clients/compte/', name: 'app_customer_view_booking')]
     public function index(BookingRepository $booking): Response
     {
         $user = $this->getUser()->getId();

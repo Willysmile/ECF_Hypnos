@@ -19,25 +19,39 @@ $gray-800: #373a3c !default;
 $gray-900: #212529 !default;
 $black:    #000 !default;
 
-$blue:    #657DC4 !default;
-$indigo:  #6610f2 !default;
-$purple:  #838ED9 !default;
-$pink:    #e83e8c !default;
-$red:     #F59292 !default;
+$blue:    #0FA3B1 !default;
+$indigo:  #254E70 !default;
+$purple:  #912F56 !default;
+$pink:    #DA627D !default;
+$red:     #DA5552 !default;
 $orange:  #d9831f !default;
 $yellow:  #ffc107 !default;
-$green:   #469408 !default;
+$green:   #91972A !default;
 $teal:    #20c997 !default;
 $cyan:    #029acf !default;
 
-$primary:       $blue !default;
+$primary:       $indigo !default;
 $secondary:     $purple !default;
 $success:       $green !default;
-$info:          $cyan !default;
+$info:          $blue !default;
 $warning:       $orange !default;
 $danger:        $red !default;
-$light:         $white !default;
+$light:         #ECE8E5 !default;
 $dark:          $gray-800 !default;
+
+//$blue:    #657DC4 !default;
+//$indigo:  #6610f2 !default;
+//$purple:  #838ED9 !default;
+//$pink:    #e83e8c !default;
+//$red:     #F59292 !default;
+//$orange:  #d9831f !default;
+//$yellow:  #ffc107 !default;
+//$green:   #469408 !default;
+//$teal:    #20c997 !default;
+//$cyan:    #029acf !default;//
+
+
+
 
 $min-contrast-ratio:   2.2 !default;
 
@@ -48,7 +62,7 @@ $body-bg:                   #ECE8E5 !default;
 // Fonts
 
 // stylelint-disable-next-line value-keyword-case
-$font-family-sans-serif:      "Metrophobic", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol" !default;
+$font-family-sans-serif:       'Proza Libre', sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol" !default;
 
 // Dropdowns
 

@@ -70,7 +70,7 @@ class ContactFormType extends AbstractType
             ->add('submit', SubmitType::class, [
                 'label' => "Envoyer votre message",
                 'attr' => [
-                    'class' => "btn btn-lg btn-primary m-3"
+                    'class' => "btn btn-lg btn-secondary m-3"
                 ]
 
             ]);

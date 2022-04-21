@@ -14,7 +14,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class ContactFormController extends AbstractController
 {
-    #[Route('/contact/form', name: 'app_contact_form')]
+    #[Route('/contact/formulaire', name: 'app_contact_form')]
     public function index(Request $request, MailerInterface $mailer): Response
     {
 

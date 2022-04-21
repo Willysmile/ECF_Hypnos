@@ -17,9 +17,17 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class BookingRegistrationController extends AbstractController
 {
-    #[Route('/booking/registration', name: 'app_booking_registration')]
+    #[Route('/reservations', name: 'app_booking_registration')]
     public function index(Request $request, SuiteRepository $suiteRepository, EntityManagerInterface $entity, HotelRepository $hotelRepository): Response
     {
+
+        $user = $this->getUser();
+
+        if ($user && $user->getRoles() == ['ROLE_CUSTOMER']) {
+
+
+
+
 
         $hotel = $hotelRepository->findAll();
 
@@ -61,6 +69,7 @@ class BookingRegistrationController extends AbstractController
             'notification' => $notification
 
         ]);
+        } else return $this->render('booking_registration/unvalid-access.twig',);
 
     }
 

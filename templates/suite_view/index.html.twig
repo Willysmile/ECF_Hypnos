@@ -5,7 +5,7 @@
 {% block body %}
 
 
-  <div>
+  <div class="container-fluid">
     <img class="img-fluid my-3 " src="{{ asset('./images/suite/'~suite.imageName) }}"
          alt="Photo de la suite {{ suite.name }}">
   </div>
@@ -14,7 +14,7 @@
   <div class="d-flex justify-content-end">
     <a href="{{ path('app_booking_registration', {'id': suite.id}) }}"
        class="btn btn-info me-2">Réserver</a>
-    <a href="http://www.booking.com" target="_blank" class="btn btn-danger me-2 ">Booking.com</a>
+    <a href="http://www.booking.com" target="_blank" class="btn btn-secondary me-2 ">Booking.com</a>
     <a href="{{ path('app_hotel_view',{'id' : suite.hotel.id }) }}" class="btn btn-primary">Retourner à l’hôtel</a>
   </div>
 

@@ -1,34 +1,39 @@
 
-html{
-  font-family: 'Metrophobic', sans-serif;
+html {
+  font-family: 'Proza Libre', sans-serif;
 }
 
-h1 {
-  font-family: 'Crimson Pro', serif;
-}
-h2,h3,h4,h5,h6 {
-  font-family: 'Fira Sans Condensed', sans-serif;
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Philosopher', sans-serif;
 }
 
-.form-images label{
+.form-images label {
   font-size: 1.3rem;
   margin: 10px 0;
 
 }
 
-.vichr_resize_form legend{
+.vichr_resize_form legend {
   font-size: 1.3rem;
 }
 
-.vichr_resize_form label{
+.vichr_resize_form label {
   font-size: 1rem;
 }
 
-.vichr_resize_form  img {
+.vichr_resize_form img {
   max-width: 300px;
   border-radius: 1rem;
   border: 1px solid red;
 }
+
+@media screen and (min-width: 992px) {
+  .form-container {
+    width: 50%;
+    margin: 0 auto;
+  }
+}
+
 
 @import "./assets/styles/scss/simplex/_variables.scss";
 @import "./node_modules/bootstrap/scss/bootstrap.scss";

@@ -5,16 +5,16 @@
 {% block body %}
  <h1 class="m-3">Liste de nos établissements</h1>
 
-  <div class="row d-flex mx-auto mb-5">
+  <div class="row mx-auto mb-5">
     {% for hotel in hotels %}
       <div class="col-md-6 my-3 ">
         <hr>
-      <h2 class="h3 ms-3 text-center">Hotel {{ hotel.name }} ♥ ♥ ♥ ♥ {{ hotel.city }}</h2>
+      <h2 class="h3 ms-3 text-center">Hotel {{ hotel.name }} ♥ {{ hotel.city }}</h2>
             <div class="card m-2">
 
                 <img class="card-img-top img-fluid " src="/images/hotel/{{ hotel.imageName }}"
                      alt="Photo de l’hotel {{ hotel.name }}">
-                <a href="{{ path('app_hotel_view',{'id' : hotel.id }) }}" class="btn btn-danger">Voir l’hotel</a>
+                <a href="{{ path('app_hotel_view',{'id' : hotel.id }) }}" class="btn btn-secondary">Voir l’hotel</a>
 
             </div>
       </div>

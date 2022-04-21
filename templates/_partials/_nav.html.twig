@@ -1,9 +1,9 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-secondary sticky-top">
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary sticky-top">
   <a class="navbar-brand mx-5" href="{{ path('app_home') }}">
     <img src="{{ asset('assets/img/logo.png') }}"
          alt="Logo Hypnos" width="150 px"
          class="d-inline-block align-text-top" style="fill: white"></a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+  <button class="navbar-toggler me-4" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
           aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -11,38 +11,38 @@
   <div class="collapse navbar-collapse text-center mx-3 " id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto mx-auto">
       <li class="nav-item">
-        <a href="{{ path('app_home') }}" class="btn btn-outline-light  mx-2"> Accueil</a>
+        <a href="{{ path('app_home') }}" class="btn btn-outline-light  my-1 mx-2"> Accueil</a>
       </li>
       <li class="nav-item">
-        <a href="{{ path('app_hotel_list') }}" class="btn btn-outline-light  mx-2">Nos établissements</a>
+        <a href="{{ path('app_hotel_list') }}" class="btn btn-outline-light  my-1 mx-2">Nos établissements</a>
       </li>
 
       {% if is_granted('ROLE_CUSTOMER') %}
         <li class="nav-item">
-          <a href="{{ path('app_customer_view_booking') }}" class="btn btn-outline-light  mx-2">Mon compte</a>
+          <a href="{{ path('app_customer_view_booking') }}" class="btn btn-outline-light  my-1 mx-2">Mon compte</a>
         </li>
-        <li class="nav-item">      <a href="{{ path('app_booking_registration') }}" class="btn btn-outline-light bg-lg  mx-2">Réservation</a></li>
-        <li class="nav-item">     <a href="{{ path('app_contact_form') }}" class="btn btn-outline-light  mx-2"> Contact</a></li>
-        <li class="nav-item">      <a href="{{ path('app_logout') }}" class="btn btn-outline-light bg-lg  mx-2">Déconnexion</a></li>
+        <li class="nav-item">      <a href="{{ path('app_booking_registration') }}" class="btn btn-outline-light bg-lg my-1 mx-2">Réservation</a></li>
+        <li class="nav-item">     <a href="{{ path('app_contact_form') }}" class="btn btn-outline-light  my-1 mx-2"> Contact</a></li>
+        <li class="nav-item">      <a href="{{ path('app_logout') }}" class="btn btn-outline-light bg-lg my-1 mx-2">Déconnexion</a></li>
 
       {% elseif is_granted('ROLE_MANAGER') %}
 
-        <li class="nav-item">    <a href="{{ path('app_hotel_edit') }}" class="btn btn-outline-light  mx-2">Mon compte</a></li>
-        <li class="nav-item">  <a href="{{ path('app_contact_form') }}" class="btn btn-outline-light  mx-2"> Contact</a></li>
+        <li class="nav-item">    <a href="{{ path('app_hotel_edit') }}" class="btn btn-outline-light my-1  mx-2">Mon compte</a></li>
+        <li class="nav-item">  <a href="{{ path('app_contact_form') }}" class="btn btn-outline-light my-1 mx-2"> Contact</a></li>
 
-        <li class="nav-item">   <a href="{{ path('app_logout') }}" class="btn btn-outline-light  mx-2">Déconnexion</a></li>
+        <li class="nav-item">   <a href="{{ path('app_logout') }}" class="btn btn-outline-light my-1 mx-2">Déconnexion</a></li>
 
       {% elseif is_granted('ROLE_ADMIN') %}
 
-        <li class="nav-item">     <a href="{{ path('admin') }}" class="btn btn-outline-light  mx-2">Mon compte</a></li>
-        <li class="nav-item">     <a href="{{ path('app_contact_form') }}" class="btn btn-outline-light  mx-2"> Contact</a></li>
-        <li class="nav-item">     <a href="{{ path('app_logout') }}" class="btn btn-outline-light  mx-2">Déconnexion</a></li>
+        <li class="nav-item">     <a href="{{ path('admin') }}" class="btn btn-outline-light my-1 mx-2">Mon compte</a></li>
+        <li class="nav-item">     <a href="{{ path('app_contact_form') }}" class="btn btn-outline-light my-1 mx-2"> Contact</a></li>
+        <li class="nav-item">     <a href="{{ path('app_logout') }}" class="btn btn-outline-light my-1 mx-2">Déconnexion</a></li>
 
 
       {% else %}
-        <li class="nav-item">  <a href="{{ path('app_login') }}" class="btn btn-outline-light  mx-2">Connexion</a></li>
-        <li class="nav-item">   <a href="{{ path('app_customer_registration') }}" class="btn btn-outline-light  mx-2">Inscription</a></li>
-        <li class="nav-item">   <a href="{{ path('app_contact_form') }}" class="btn btn-outline-light  mx-2"> Contact</a></li>
+        <li class="nav-item">  <a href="{{ path('app_login') }}" class="btn btn-outline-light my-1 mx-2">Connexion</a></li>
+        <li class="nav-item">   <a href="{{ path('app_customer_registration') }}" class="btn btn-outline-light my-1 mx-2">Inscription</a></li>
+        <li class="nav-item">   <a href="{{ path('app_contact_form') }}" class="btn btn-outline-light my-1 mx-2"> Contact</a></li>
       {% endif %}
 
 

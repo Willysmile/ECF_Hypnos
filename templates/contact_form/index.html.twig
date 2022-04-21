@@ -3,20 +3,20 @@
 {% block title %}Formulaire de contact{% endblock %}
 
 {% block body %}
-
+<div	class="form-container mx-auto ">
     <h1 class="h1 my-4 mx-auto text-center"> Formulaire de contact</h1>
 
-    <p class="w-50 mx-auto ">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores et facere ipsam labore
+    <p class=" mx-auto ">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores et facere ipsam labore
         reiciendis repellat?
         Consectetur culpa dolore doloribus eos eum, fugiat ipsum modi nostrum odio odit placeat unde vero?</p>
 
-    <div class="my-4 w-50 mx-auto">
+    <div class="my-4 mx-auto max-vw-100">
         {{ form(form) }}
         {% if notification %}
 
             <div class="alert alert-success"><p>{{ notification }}</p></div>
         {% endif %}
     </div>
-
+</div>
 
 {% endblock %}

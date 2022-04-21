@@ -5,7 +5,7 @@
 {% block body %}
 
 	<div class="container-fluid ">
-		<h1 class="h1 my-4 text-center"> Hypnos, les plus beaux hotels pour des séjours romantiques</h1>
+		<h1 class="h1 my-4 text-center"> Hypnos, les plus beaux hôtels pour des séjours romantiques</h1>
 
 		<div id="carousel" class="carousel slide mx-auto" data-ride="carousel" style="max-width: 1000px">
 			<div class="carousel-inner">
@@ -14,11 +14,12 @@
 				{% for hotel in hotels %}
 
 					<div class="carousel-item ">
-						<div class="card">
+						<div class="card bg-secondary">
 							<img class="card-img-top img-fluid " src="/images/hotel/{{ hotel.imageName }}"
-									 alt="Photo de l’hotel {{ hotel.name }}">
-							<div class="card-text m-2 d-flex justify-content-around h4 align-items-center"> Hotel {{ hotel.name }}  ♥ ♥ ♥ ♥  {{ hotel.city }}<a
-										href="{{ path('app_hotel_view',{'id' : hotel.id }) }}" class="btn btn-danger">Voir l’hotel</a></div>
+									 alt="Photo de l’hôtel {{ hotel.name }}">
+							<div class="card-text text-light m-2 d-flex justify-content-around h4 align-items-center"> Hotel {{ hotel.name }} ♥
+								 {{ hotel.city }}<a
+										href="{{ path('app_hotel_view',{'id' : hotel.id }) }}" class="btn btn-info">Voir l’hotel</a></div>
 						</div>
 					</div>
 				{% endfor %}
@@ -34,31 +35,41 @@
 
 		</div>
 
-	<div class="container-fluid mt-5">
+		<div class="container-fluid mt-5">
 
-	<div class="row d-flex text-center">
+			<div class="row d-flex text-center">
 
-		<div class="col-12 col-md-4 p-2"><img class="img-fluid"   src="{{ asset('/assets/img/room-service-svgrepo-com.svg')}}" style='width: 10rem' >
-		<p class="my-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perspiciatis, quaerat repudiandae. Cumque delectus dolorum eius enim in,
-			saepe voluptatum. Architecto corporis cum dolor dolores fuga impedit, nesciunt nulla praesentium quod reiciendis repudiandae ut vel,
-			voluptatum!.</p>
+				<div class="col-12 col-md-4">
+					<img class="img-fluid" src="{{ asset('/assets/img/room-service-svgrepo-com.svg') }}" style='width: 10rem'>
+					<p class="my-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perspiciatis, quaerat repudiandae.
+						Cumque delectus dolorum eius enim in,
+						saepe voluptatum. Architecto corporis cum dolor dolores fuga impedit, nesciunt nulla praesentium quod
+						reiciendis repudiandae ut vel,
+						voluptatum!.</p>
+
+				</div>
+
+				<div class="col-12 col-md-4">
+					<img class="img-fluid " src="{{ asset('/assets/img/room-key-svgrepo-com.svg') }}" style='width: 10rem'>
+					<p class="my-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid doloremque ducimus eaque
+						earum error eum inventore magnam,
+						maiores porro repellendus repudiandae tenetur ullam voluptates! Consequuntur cumque debitis iusto, modi
+						nostrum odio porro
+						reprehenderit tempore voluptatem.</p>
+
+				</div>
+
+				<div class="col-12 col-md-4">
+					<img class="img-fluid " src="{{ asset('/assets/img/spa-svgrepo-com.svg') }}" style='width: 10rem'>
+					<p class="my-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid architecto aut blanditiis,
+						corporis cumque deserunt distinctio
+						doloribus ea eius eveniet facere incidunt ipsa ipsum itaque iusto mollitia odit omnis pariatur quae rem,
+						rerum unde voluptatum?</p>
+				</div>
+
+			</div>
 
 		</div>
-
-		<div class=" col-12 col-md-4 p-2 "><img class="img-fluid " src="{{ asset('/assets/img/room-key-svgrepo-com.svg')}}" style='width: 10rem' >
-		<p class="my-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid doloremque ducimus eaque earum error eum inventore magnam,
-			maiores porro repellendus repudiandae tenetur ullam voluptates! Consequuntur cumque debitis iusto, modi nostrum odio porro
-			reprehenderit tempore voluptatem.</p>
-
-		</div>
-		<div class="col-12 col-md-4 p-2 "><img class="img-fluid " src="{{ asset('/assets/img/spa-svgrepo-com.svg')}}" style='width: 10rem' >
-		<p class="my-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid architecto aut blanditiis, corporis cumque deserunt distinctio
-			doloribus ea eius eveniet facere incidunt ipsa ipsum itaque iusto mollitia odit omnis pariatur quae rem, rerum unde voluptatum?</p>
-		</div>
-
-	</div>
-
-	</div>
 	</div>
 
 

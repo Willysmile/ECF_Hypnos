@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Reservation suite{% endblock %}
+
+{% block body %}
+	<link href='https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css' rel='stylesheet' type='text/css'>
+
+
+
+
+<div class="container w-75 text-center">
+<h1 class="my-4 ">Formulaire de réservation</h1>
+
+	<h2 class="alert h3my-3">L’accès au formulaire de réservation est reservé aux clients enregistrés.</h2>
+
+	<h3 class="mb-4"> Merci de bien vouloir vous connecter, ou le cas échéant vous inscrire.</h3>
+
+	<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad alias cum cumque doloremque ducimus eos eum excepturi
+		facere fugit hic illo itaque, maiores obcaecati perferendis reprehenderit soluta sunt veritatis vitae.</p>
+
+	<div class="d-flex justify-content-around mt-4">
+	<a href="{{ path('app_login') }}" class="btn btn-secondary btn-lg my-1 mx-2">Connexion</a>
+	<a href="{{ path('app_customer_registration') }}" class="btn btn-secondary btn-lg my-1 mx-2">Inscription</a>
+	</div>
+</div>
+{% endblock %}
+
+

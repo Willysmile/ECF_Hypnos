@@ -15,7 +15,6 @@ import './styles/scss/_custom.scss';
 import './bootstrap';
 
 
-
 const $ = require('jquery');
 
 global.$ = global.jQuery = $;

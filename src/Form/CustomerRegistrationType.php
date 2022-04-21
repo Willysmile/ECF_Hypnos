@@ -67,7 +67,7 @@ class CustomerRegistrationType extends AbstractType
             ->add('submit', SubmitType::class, [
                 'label' => "S’inscrire",
                 'attr' => [
-                    'class' => "btn btn-lg btn-primary m-3"
+                    'class' => "btn btn-lg btn-secondary m-3"
                 ]
 
             ]);
