@@ -84,7 +84,7 @@ https://symfony.com/doc/current/setup.html
 
 
 - Créér une nouvelle application:
-- 
+
 
     `Heroku heroku create`
 
