@@ -20,14 +20,14 @@ class HotelRegistrationType extends AbstractType
                 'label' => 'Le nom de votre établissement est :',
                 'disabled' => "true",
                 'attr' => [
-                    'class' => "form-control m-2 w-50",
+                    'class' => "form-control m-2 w-75",
                 ]
 
             ])   ->add('address', TextType::class, [
                 'label' => 'L’adresse est :',
                 'disabled' => "true",
                 'attr' => [
-                    'class' => "form-control m-2 w-50 ",
+                    'class' => "form-control m-2 w-75 ",
                      ]
 
 
@@ -39,7 +39,7 @@ class HotelRegistrationType extends AbstractType
                 'delete_label' => 'Suppression de l’image',
                 'download_link' => false,
                 'attr' => [
-                    'class' => "form-control m-2 w-50 ",
+                    'class' => "form-control m-2 w-75 ",
                 ]
 
 
@@ -53,7 +53,7 @@ class HotelRegistrationType extends AbstractType
                 'label' => 'La ville',
                 'disabled' => "true",
                 'attr' => [
-                    'class' => "form-control m-2 w-50 "]
+                    'class' => "form-control m-2 w-75 "]
 
             ])
 
@@ -61,7 +61,7 @@ class HotelRegistrationType extends AbstractType
             ->add('description', TextareaType::class, [
                 'label' => 'Description de l’établissement',
                 'attr' => [
-                    'class' => "form-control m-2 w-50 ",
+                    'class' => "form-control m-2 w-75 ",
                     'rows' => 8 ]
 
                 ]
@@ -69,7 +69,7 @@ class HotelRegistrationType extends AbstractType
             ->add('submit', SubmitType::class, [
                 'label' => "Mettre à jour",
                 'attr' => [
-                    'class' => "btn btn-lg btn-primary m-3"
+                    'class' => "btn btn-primary m-3"
                 ]
 
             ]);

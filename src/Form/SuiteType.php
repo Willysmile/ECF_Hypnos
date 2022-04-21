@@ -21,13 +21,13 @@ class SuiteType extends AbstractType
             ->add('name', TextType::class, [
                 'label' => 'Nom de la suite',
                 'attr' => [
-                    'class' => "form-control m-2 w-50",
+                    'class' => "form-control m-2 w-75",
                 ]
             ])
             ->add('description', TextAreaType::class, [
                 'label' => 'Description de la suite',
                 'attr' => [
-                    'class' => "form-control m-2 w-50",
+                    'class' => "form-control m-2 w-75",
                 ]
             ])
             ->add('night_price', IntegerType::class, [
@@ -42,7 +42,7 @@ class SuiteType extends AbstractType
                 'delete_label' => 'Suppression de l’image',
                 'download_link' => false,
                 'attr' => [
-                    'class' => "form-control m-2 w-50 ",
+                    'class' => "form-control m-2 w-75 ",
 
                 ]])
 
@@ -52,7 +52,7 @@ class SuiteType extends AbstractType
                 'mapped' => false,
                 'required' => false,
                 'attr' => [
-                    'class' => "form-control m-2 w-50",
+                    'class' => "form-control m-2 w-75",
                 ]
             ]);
 

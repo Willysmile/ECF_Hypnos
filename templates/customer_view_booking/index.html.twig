@@ -3,7 +3,7 @@
 {% block title %}Vos réservations{% endblock %}
 
 {% block body %}
-	<div class="container w-75">
+	<div class="container mb-3">
 		<h1 class="h1 my-4">Vue d’ensemble de vos réservations</h1>
 
 		<h2 class="h3 my-2">Retrouvez-ici l’historique de l’ensemble de vos réservations.</h2>
@@ -15,7 +15,7 @@
 			{% for booking in bookings %}
 
 
-				<div class="card w-75 text-center mx-auto mt-5">
+				<div class="card  text-center mx-auto mt-5">
 					<div class="card-body">
 						<h4>Hotel {{ booking.suite.hotel }} à  {{ booking.suite.hotel.city }} </h4>
 						<h5>{{ booking.suite.name }}</h5>

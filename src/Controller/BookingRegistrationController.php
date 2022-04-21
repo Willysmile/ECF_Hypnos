@@ -23,10 +23,7 @@ class BookingRegistrationController extends AbstractController
 
         $user = $this->getUser();
 
-        if ($user && $user->getRoles() == ['ROLE_CUSTOMER']) {
-
-
-
+        if ($user && $this->container->get('security.authorization_checker')->isGranted('ROLE_CUSTOMER')) {
 
 
         $hotel = $hotelRepository->findAll();
