@@ -2,6 +2,8 @@
 
 ## Projet Hypnos // ECF Studi 2022
 
+Live Demo : https://ecfhypnoshotels.herokuapp.com/
+
 ### Description
 
 Dépot Github du projet Hypnos réalisé dans le cadre d’une évaluation en cours de formation (ECF) Studi.
