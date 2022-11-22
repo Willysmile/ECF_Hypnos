@@ -14,6 +14,9 @@ Dans le dossier Annexes du dépot se trouvent les documents demandés:
 - Document technique
 - Charte graphique
 
+- Dossier Professionnel
+- Dossier de Projet (présenté au Jury)
+
 ---
 
 Ce projet est réalisé via Symfony 6.0.6
